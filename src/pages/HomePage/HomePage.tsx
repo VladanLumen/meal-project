@@ -13,13 +13,14 @@ export interface MealType {
 interface MaxPageNumber{
   maxPageNumber:number;
 }
+
 interface PageNumber{
   number:number;
 }
 
 const HomePageContext = createContext({});
 
-const HomePage: React.FC = () => {
+  const HomePage: React.FC = () => {
   const [data, setData] = useState<MealType[]>([])
   const [currentPage,setCurrentPage] = useState(2);
   const [mealsPerPage,setMealsPerPage] = useState(8);
@@ -56,8 +57,11 @@ const HomePage: React.FC = () => {
   )
 }
 
+
+
+
 const Paging = ({maxPageNumber}:MaxPageNumber) => {
-  const numbers:number[] = [];
+  const numbers = [];
   for(let i=0;i<maxPageNumber;i++){
     numbers.push(i+1);
   }
@@ -75,8 +79,13 @@ const Paging = ({maxPageNumber}:MaxPageNumber) => {
 }
 
 
+
+
+
+
 const PageNumber = ({number}:PageNumber) => {
-  const {currentPage,setCurrentPage}:any = useContext(HomePageContext);
+  const context = useContext(HomePageContext) as {currentPage: number, setCurrentPage: React.Dispatch<React.SetStateAction<number>>};
+  const {currentPage,setCurrentPage} = context;
   return (
      <div className={`pageNumber${number===currentPage?'Clicked':''}`} onClick={()=>{
       setCurrentPage(number);
