@@ -1,5 +1,9 @@
 .topbar{
+<<<<<<< HEAD
     height: 100px;
+=======
+    height:10vh;
+>>>>>>> bozin-dev
     background-color: blanchedalmond;
     display: flex;
     justify-content: center;

@@ -8,7 +8,6 @@ interface MealsProps {
 }
 
 const Meals: React.FC<MealsProps> = ({data, id}) => {
-  console.log(data);
 
   return (
     <div>
@@ -16,7 +15,7 @@ const Meals: React.FC<MealsProps> = ({data, id}) => {
         <h1 className="meal-title">{data.strArea}</h1>
         <img className="meal-img" src={data.strMealThumb} />
         <p className="meal-desc">{data.strInstructions.slice(0, 230)}</p>
-        <Link to=''><button className="meal-btn">Learn More</button></Link>
+        <Link to={`/${data.idMeal}`}><button className="meal-btn">Learn More</button></Link>
       </div>
     </div>
   );

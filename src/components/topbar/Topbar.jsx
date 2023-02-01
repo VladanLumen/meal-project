@@ -26,13 +26,27 @@ const NamePlaceholder = ({nameFirstLetter}) => {
 
 
 export const Searchbar = () => {
+<<<<<<< HEAD
+=======
+
+  const handleChange = (event) => {
+    let value = event.target.value;
+    if(value!=='' && value!==undefined && value!==' '){
+        console.info(value);
+    }
+  };
+>>>>>>> bozin-dev
   return (
     <div className='searchbar'>
         <div className="sbLeft">
             <img src={searchImage} alt="" className="searchImage" />
         </div>
         <div className="sbRight">
+<<<<<<< HEAD
             <input placeholder='write text...' type="text" className="searchInputField" />
+=======
+            <input placeholder='write text...' type="text" className="searchInputField" onChange={(e)=>{handleChange(e)}}/>
+>>>>>>> bozin-dev
         </div>
     </div>
   )
