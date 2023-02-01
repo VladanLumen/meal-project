@@ -33,6 +33,7 @@ export const HomePageContext = createContext({});
 
   useEffect(() => {
     fetchData()
+    
   }, [])
 
   return (
