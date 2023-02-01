@@ -6,8 +6,13 @@ import Login from "./pages/LoginPage/Login";
 import OneMeal from "./pages/OneMeal/OneMeal";
 import Register from "./pages/Register/Register";
 
+
+interface oneMealType {
+  idMeal:number
+}
+
 function App() {
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(true);
   return (
     <div>
       {isLogged ? (

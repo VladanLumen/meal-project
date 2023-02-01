@@ -1,0 +1,13 @@
+.single{
+    /* text-align: center; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background-color: red; */
+}
+.single-meal{
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+}
