@@ -3,6 +3,8 @@ import Meals from './Meals'
 import Topbar from '../../components/topbar/Topbar';
 import Sidebar from '../../components/sidebar/Sidebar';
 import './homePage.css';
+import Paging from './Paging';
+
 export interface MealType {
   strArea: string;
   strMealThumb: string;
@@ -10,15 +12,13 @@ export interface MealType {
   idMeal:number;
 }
 
-interface MaxPageNumber{
-  maxPageNumber:number;
-}
+
 
 interface PageNumber{
   number:number;
 }
 
-const HomePageContext = createContext({});
+export const HomePageContext = createContext({});
 
   const HomePage: React.FC = () => {
   const [data, setData] = useState<MealType[]>([])
@@ -56,45 +56,6 @@ const HomePageContext = createContext({});
     </div>
   )
 }
-
-
-
-
-const Paging = ({maxPageNumber}:MaxPageNumber) => {
-  const numbers = [];
-  for(let i=0;i<maxPageNumber;i++){
-    numbers.push(i+1);
-  }
-  return (
-    <div className='paging'>
-      {
-        numbers.map((item,id)=>{
-          return (
-            <PageNumber number={item} key={id}  />
-          )
-        })
-      }
-    </div>
-  )
-}
-
-
-
-
-
-
-const PageNumber = ({number}:PageNumber) => {
-  const context = useContext(HomePageContext) as {currentPage: number, setCurrentPage: React.Dispatch<React.SetStateAction<number>>};
-  const {currentPage,setCurrentPage} = context;
-  return (
-     <div className={`pageNumber${number===currentPage?'Clicked':''}`} onClick={()=>{
-      setCurrentPage(number);
-     }}>
-       {number}
-    </div>
-  )
-}
-
 
 
 export default HomePage
