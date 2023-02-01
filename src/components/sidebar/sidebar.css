@@ -1,0 +1,22 @@
+.sidebar{
+    width: 100%;
+    background-color:rgb(233, 233, 233);
+    display: grid;
+    height: 80vh;
+    grid-template-rows: 50% 50%;
+    overflow: hidden;
+    gap: 20px;
+}
+.sidebarSection{
+    text-align: center;
+    font-size: 2.7rem;
+}
+.sectionItems{
+    overflow-y: scroll;
+    text-align: end;
+    max-height: 300px;
+}
+.item{
+    height: 75px;
+    font-size: 2rem;
+}

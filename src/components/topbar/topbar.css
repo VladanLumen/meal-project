@@ -1,0 +1,63 @@
+.topbar{
+    height:10vh;
+    background-color: blanchedalmond;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tleft{
+    height: 100%;
+    flex:1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.tright{
+    height: 100%;
+    flex:8;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin-right: 100px;
+}
+
+.namePlaceholder{
+    background-color: rgb(236, 236, 236);
+    border-radius: 50%;
+    height: 90px;
+    width: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+}
+
+.searchbar{
+    height: 40px;
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:20px;
+}
+.sbLeft{
+    flex:1;
+    height: 100%;
+}
+.sbRight{
+    flex:8;
+    height: 100%;
+}
+.searchImage{
+    width: 100%;
+    height: 100%;
+    min-width: 40px;
+    min-height: 40px;
+}
+
+.searchInputField{
+    height: 100%;
+    width: 100%;
+    border: none;
+    min-width: 150px;
+}
