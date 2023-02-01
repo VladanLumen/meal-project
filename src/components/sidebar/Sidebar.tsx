@@ -1,13 +1,5 @@
 import React from 'react'
 import './sidebar.css'
-<<<<<<< HEAD
-const Sidebar = () => {
-  return (
-    <div className='sidebar'>Sidebar</div>
-  )
-}
-
-=======
 
 type SidebarSectionName = {
   name:string,
@@ -45,5 +37,4 @@ const SidebarSection:React.FC <SidebarSectionName> = ({name,data}) => {
 
 
 
->>>>>>> bozin-dev
 export default Sidebar
