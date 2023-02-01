@@ -15,12 +15,8 @@ export interface MealType {
 
 
 
-
-
-    
+      
   }
-
-
 
 
 const HomePage:React.FC = () => {
