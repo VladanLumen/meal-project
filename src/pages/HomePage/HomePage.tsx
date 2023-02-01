@@ -29,11 +29,11 @@ export const HomePageContext = createContext({});
     const res = await fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=a")
       .then((response) => response.json())
       .then(data => setData(data.meals))
+      
   }
 
   useEffect(() => {
     fetchData()
-    
   }, [])
 
   return (
