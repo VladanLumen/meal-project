@@ -2,9 +2,10 @@ import { createContext, useContext, useEffect, useState } from 'react';
 import './sidebar.css'
 import { AppContext } from '../../App';
 
-type SidebarSectionName = {
+type SidebarSection = {
   name:string,
   data:string[]
+  showDelete:boolean
 }
 
 
@@ -13,50 +14,17 @@ const Sidebar = () => {
   const appContext = useContext(AppContext) as {favoriteIngredients:string[],favoriteMeals:string[],addFavoriteMeal:(arg:string)=>{},addFavoriteIngredient:(arg:string)=>{}};
   const {favoriteIngredients,favoriteMeals,addFavoriteMeal,addFavoriteIngredient} = appContext;
 
-  
-  // useEffect(() => {
-  //   const fetchIngredients = async () => {
-  //     const response = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
-  //     const data = await response.json();
-  //     setIngredients(data.meals);
-  //   };
-  //   const fetchMeals = async () => {
-  //     const response = await fetch('https://www.themealdb.com/api/json/v1/1/search.php?f=a');
-  //     const data = await response.json();
-  //     setMeals(data.meals);
-  //   };
-
-  //   fetchIngredients();
-  //   fetchMeals();
-  // }, []);
-
-  // const selectedMeals:string[] = [];
-  // for(let i=0;i<favoriteMeals.length;i++){
-    // selectedMeals.push(favoriteMeals[i]['strMeal']);
-  // }
-  // selectedMeals.push("Mosakue");
-  // console.info(selectedMeals);
-
- 
-  // const selectedIngredients = favoriteIngredients.slice(0, 6);
-  // const selectedIngredientsNames:string[] = [];
-  // for(let i=0;i<selectedIngredients.length;i++){
-  //   selectedIngredientsNames.push(selectedIngredients[i]['strIngredient']);
-  // }
-  // console.info(selectedIngredientsNames);
-
-
-
+  const ingredients = ["Flout","Milk","Eggs","Beef","Onions"]
   return (
     <div className='sidebar'>
-      <SidebarSection name={"Meal"} data={favoriteMeals} /> 
-      <SidebarSection name={"Ingredient"} data={favoriteIngredients}/>
+      <SidebarSection name={"Meal"} data={favoriteMeals} showDelete={true}/> 
+      <SidebarSection name={"Ingredient"} data={ingredients} showDelete={false}/>
     </div>
   )
 }
 
 
-const SidebarSection = ({name,data}:SidebarSectionName) => {
+const SidebarSection = ({name,data,showDelete}:SidebarSection) => {
 
   const appContext = useContext(AppContext) as {favoriteIngredients:string[],favoriteMeals:string[],addFavoriteMeal:(arg:string)=>{},addFavoriteIngredient:(arg:string)=>{},deleteMeal:(arg:string)=>{}};
   const {deleteMeal} = appContext;
@@ -70,7 +38,7 @@ const SidebarSection = ({name,data}:SidebarSectionName) => {
           return (
             <div className="itemWrap">
               <p key={id} className="item">{item}</p>
-              <button onClick={()=>{deleteMeal(item)}} className='deleteItem'>X</button>
+              {showDelete && <button onClick={()=>{deleteMeal(item)}} className='deleteItem'>X</button>}
             </div>
           )
         })
