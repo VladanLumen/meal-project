@@ -12,11 +12,13 @@ const Sidebar = () => {
 
   const appContext = useContext(AppContext) as {favoriteIngredients:string[],favoriteMeals:string[],addFavoriteMeal:(arg:string)=>{},addFavoriteIngredient:(arg:string)=>{}};
   const {favoriteIngredients,favoriteMeals,addFavoriteMeal,addFavoriteIngredient} = appContext;
+  const ingredients = ["Flout","Milk","Eggs","Beef","Onions"]
+
 
   return (
     <div className='sidebar'>
       <SidebarSection name={"Meal"} data={favoriteMeals} /> 
-      <SidebarSection name={"Ingredient"} data={favoriteIngredients}/>
+      <SidebarSection name={"Ingredient"} data={ingredients}/>
     </div>
   )
 }
