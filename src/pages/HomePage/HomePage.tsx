@@ -3,7 +3,7 @@ import Meals from './Meals'
 import Topbar from '../../components/topbar/Topbar';
 import Sidebar from '../../components/sidebar/Sidebar';
 import './homePage.css';
-
+import Paging from './Paging';
 
 export interface MealType {
   strArea: string,
@@ -12,25 +12,24 @@ export interface MealType {
   idMeal:number,
 }
 
-interface MaxPageNumber{
-  maxPageNumber:number;
-}
 
 interface PageNumber{
   number:number;
 }
 
-const HomePageContext = createContext({});
+export const HomePageContext = createContext({});
 
-const HomePage: React.FC = () => {
-  const [ data, setData] = useState<MealType[]>([])
-  const [ currentPage, setCurrentPage] = useState(1);
-  const [ mealsPerPage, setMealsPerPage] = useState(8);
+  const HomePage: React.FC = () => {
+  const [data, setData] = useState<MealType[]>([])
+  const [currentPage,setCurrentPage] = useState(2);
+  const [mealsPerPage,setMealsPerPage] = useState(8);
 
   const fetchData = async () => {
     const res = await fetch("https://www.themealdb.com/api/json/v1/1/search.php?s=a")
       .then((response) => response.json())
       .then(data => setData(data.meals))
+       
+      
   }
 
   useEffect(() => {
@@ -58,37 +57,6 @@ const HomePage: React.FC = () => {
     </div>
   )
 }
-
-const Paging = ({maxPageNumber}:MaxPageNumber) => {
-  const numbers:number[] = [];
-  for(let i=0;i<maxPageNumber;i++){
-    numbers.push(i+1);
-  }
-  return (
-    <div className='paging'>
-      {
-        numbers.map((item,id)=>{
-          return (
-            <PageNumber number={item} key={id}  />
-          )
-        })
-      }
-    </div>
-  )
-}
-
-
-const PageNumber = ({number}:PageNumber) => {
-  const {currentPage,setCurrentPage}:any = useContext(HomePageContext);
-  return (
-     <div className={`pageNumber${number===currentPage?'Clicked':''}`} onClick={()=>{
-      setCurrentPage(number);
-     }}>
-       {number}
-    </div>
-  )
-}
-
 
 
 export default HomePage

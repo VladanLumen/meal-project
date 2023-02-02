@@ -10,6 +10,7 @@
 .sidebarSection{
     text-align: center;
     font-size: 2.7rem;
+    border-bottom: 1px solid black;
 }
 .sectionItems{
     overflow-y: scroll;
@@ -19,4 +20,37 @@
 .item{
     height: 75px;
     font-size: 2rem;
+<<<<<<< HEAD
+=======
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.item:hover{
+    background-color: black;
+    color: white;
+
+}
+
+
+
+@media (max-width:1440px) {
+    .sidebarSection{
+        font-size: 2.2rem;
+    }
+    .item{
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width:1440px) {
+    .sidebarSection{
+        font-size: 1.6rem;
+    }
+    .item{
+        font-size: 1.1rem;
+    }
+>>>>>>> origin/bozin-dev
 }

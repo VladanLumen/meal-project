@@ -1,6 +1,9 @@
 import React from 'react'
 import './topbar.css'
 import searchImage from '../../images/search.png'
+import { useEffect, useState } from 'react'
+
+
 const Topbar = ({ nameFirstLetter }) => {
     return (
         <div className='topbar'>
@@ -24,6 +27,7 @@ const NamePlaceholder = ({nameFirstLetter}) => {
     )
 }
 
+//www.themealdb.com/api/json/v1/1/search.php?f=a
 
 export const Searchbar = () => {
 
