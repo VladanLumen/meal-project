@@ -47,16 +47,19 @@ const OneMeal = () => {
   return (
     <div className="single">
       <Link to="/">
-        <button>Go to Home page</button>
+        <button className="go-home">Go to Home page</button>
       </Link>
       <div className="single-meal">
         <div className="meal-image">
           <img src={oneMeal?.strMealThumb} />
         </div>
         <div className="meal-content">
-          <h1>Country: {oneMeal?.strArea}</h1>
           <h1>Name: {oneMeal?.strMeal}</h1>
-          <p>How to prepare: {oneMeal?.strInstructions}</p>
+          <h2>Country: {oneMeal?.strArea}</h2>
+          <h3>{oneMeal?.strTags}</h3>
+          <p><span style={{fontWeight:'bold', fontSize:'20px'}}>How to prepare: </span>{oneMeal?.strInstructions}</p>
+          <p>Ingrediant: {oneMeal?.strIngredient1} </p>
+          <p></p>
         </div>
       </div>
     </div>
