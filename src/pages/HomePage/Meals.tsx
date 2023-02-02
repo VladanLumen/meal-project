@@ -14,7 +14,6 @@ const Meals: React.FC<MealsProps> = ({data, id}) => {
 
   const appContext = useContext(AppContext) as {favoriteIngredients:string[],favoriteMeals:string[],addFavoriteMeal:(arg:string)=>{},addFavoriteIngredient:(arg:string)=>{}};
   const {addFavoriteMeal} = appContext;
-  console.log(appContext);
   
   return (
     <div>
