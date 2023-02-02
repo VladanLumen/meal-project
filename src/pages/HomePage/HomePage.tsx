@@ -58,36 +58,49 @@ const HomePage: React.FC = () => {
                 currentPage * mealsPerPage
               )
               .map((meal, id) => {
-                return <Meals data={meal} id={id} />;
+                return (
+                  <>
+                    <Meals data={meal} id={id} />
+                  </>
+                );
               })}
+            <HomePageContext.Provider value={{ currentPage, setCurrentPage }}>
+              <Paging maxPageNumber={Math.ceil(data.length / mealsPerPage)} />
+            </HomePageContext.Provider>
           </div>
         ) : (
           <div className="msRight">
             <>{console.log("MY MEAL", myMeal)}</>
-            {myMeal.map((item:any, id) => {
+            {myMeal.map((item: any, id) => {
               console.log("ITEM", item);
-              
+
               return (
                 <>
-                  {item.slice(
-                (currentPage - 1) * mealsPerPage,
-                currentPage * mealsPerPage
-              ).map((meal: any) => {
-                    return (
-                      <>
-                        <SearchedMeals data={meal} />
-                      </>
-                    );
-                  })}
+                  {item
+                    .slice(
+                      (currentPage - 1) * mealsPerPage,
+                      currentPage * mealsPerPage
+                    )
+                    .map((meal: any) => {
+                      return (
+                        <>
+                          <SearchedMeals data={meal} />
+                        </>
+                      );
+                    })}
+                  <HomePageContext.Provider
+                    value={{ currentPage, setCurrentPage }}
+                  >
+                    <Paging
+                      maxPageNumber={Math.ceil(item.length / mealsPerPage)}
+                    />
+                  </HomePageContext.Provider>
                 </>
               );
             })}
           </div>
         )}
       </div>
-      <HomePageContext.Provider value={{ currentPage, setCurrentPage }}>
-        <Paging maxPageNumber={Math.ceil(data.length / mealsPerPage)} />
-      </HomePageContext.Provider>
     </div>
   );
 };
