@@ -18,21 +18,31 @@
     text-align: end;
     max-height: 300px;
 }
+.itemWrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .item{
     height: 75px;
     font-size: 2rem;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     text-align: center;
+    margin-left: 10px;
+
 }
 
 .item:hover{
     background-color: black;
     color: white;
-
 }
-
+.deleteItem{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
 
 
 @media (max-width:1440px) {

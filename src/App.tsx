@@ -19,16 +19,21 @@ function App() {
   const [favoriteMeals, setMeals] = useState<string[]>([]);
 
   const addFavoriteMeal = (idMeal:string)=>{
+    if(!favoriteMeals.includes(idMeal))
     setMeals([...favoriteMeals,idMeal])
   }
   const addFavoriteIngredient = (idIngredient:string)=>{
+    if(!favoriteIngredients.includes(idIngredient))
     setIngredients([...favoriteIngredients,idIngredient]);
   }
 
+  const deleteMeal = (meal:string) => {
+    setMeals(favoriteMeals.filter(i => i !== meal));
+  };
 
   return (
     <div>
-      <AppContext.Provider value={{favoriteIngredients,favoriteMeals,addFavoriteMeal,addFavoriteIngredient}}>
+      <AppContext.Provider value={{favoriteIngredients,favoriteMeals,addFavoriteMeal,addFavoriteIngredient, deleteMeal}}>
       {isLogged ? (
         <div>
           <Routes>
