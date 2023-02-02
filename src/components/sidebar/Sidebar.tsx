@@ -13,14 +13,12 @@ const Sidebar = () => {
 
   const appContext = useContext(AppContext) as {favoriteIngredients:string[],favoriteMeals:string[],addFavoriteMeal:(arg:string)=>{},addFavoriteIngredient:(arg:string)=>{}};
   const {favoriteIngredients,favoriteMeals,addFavoriteMeal,addFavoriteIngredient} = appContext;
-  const ingredients = ["Flout","Milk","Eggs","Beef","Onions"]
-
 
   const ingredients = ["Flout","Milk","Eggs","Beef","Onions"]
   return (
     <div className='sidebar'>
-      <SidebarSection name={"Meal"} data={favoriteMeals} /> 
-      <SidebarSection name={"Ingredient"} data={ingredients}/>
+      <SidebarSection name={"Meal"} data={favoriteMeals} showDelete={true}/> 
+      <SidebarSection name={"Ingredient"} data={ingredients} showDelete={false}/>
     </div>
   )
 }
@@ -33,7 +31,7 @@ const SidebarSection = ({name,data,showDelete}:SidebarSection) => {
 
   return (
     <div className='sidebarSection'>
-      <h2 className="sectionName">{name}</h2>
+      <p className="sectionName">{name}</p>
       <div className="sectionItems">
       {
         data.map((item,id)=>{
@@ -49,5 +47,8 @@ const SidebarSection = ({name,data,showDelete}:SidebarSection) => {
     </div>
   )
 }
+
+
+
 
 export default Sidebar
