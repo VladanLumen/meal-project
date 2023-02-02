@@ -20,8 +20,6 @@
 .item{
     height: 75px;
     font-size: 2rem;
-<<<<<<< HEAD
-=======
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,5 +50,4 @@
     .item{
         font-size: 1.1rem;
     }
->>>>>>> origin/bozin-dev
 }

@@ -23,12 +23,13 @@
     border-radius: 10px;
     background-color: cadetblue;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    position: relative;
 }
 
-.meal-card:hover {
+/* .meal-card:hover {
     transform: scale(1.05);
     transition: all 0.3s ease-in-out;
-}
+} */
 
 .meal-title {
     margin: 10px 0;
@@ -55,6 +56,15 @@ a {
     text-decoration: none;
     color: black;
     font-size: medium;
+}
+
+.fav-icon{
+    position: absolute;
+    right: 5%;
+    top: 3%;
+}
+.fav-icon:active{
+    transform: scale(1.1);
 }
 
 

@@ -31,7 +31,6 @@ const Sidebar = () => {
     selectedMeals.push(meals[i]['strMeal']);
   }
   selectedMeals.push("Mosakue");
-  console.info(selectedMeals);
 
  
   const selectedIngredients = ingredients.slice(0, 6);
@@ -39,7 +38,6 @@ const Sidebar = () => {
   for(let i=0;i<selectedIngredients.length;i++){
     selectedIngredientsNames.push(selectedIngredients[i]['strIngredient']);
   }
-  console.info(selectedIngredientsNames);
 
 
   return (
