@@ -36,7 +36,7 @@ const SidebarSection = ({name,data,showDelete}:SidebarSection) => {
       {
         data.map((item,id)=>{
           return (
-            <div className="itemWrap">
+            <div className="itemWrap" key={id}>
               <p key={id} className="item">{item}</p>
               {showDelete && <button onClick={()=>{deleteMeal(item)}} className='deleteItem'>X</button>}
             </div>

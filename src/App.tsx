@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import { SearchContextProvider } from "./components/topbar/SearchContext";
 import HomePage from "./pages/HomePage/HomePage";
 import Login from "./pages/LoginPage/Login";
 import OneMeal from "./pages/OneMeal/OneMeal";
@@ -31,6 +32,7 @@ function App() {
   return (
     <div>
       <AppContext.Provider value={{favoriteIngredients,favoriteMeals,addFavoriteMeal,addFavoriteIngredient, deleteMeal}}>
+        <SearchContextProvider>
       {isLogged ? (
         <div>
           <Routes>
@@ -47,6 +49,7 @@ function App() {
           </Routes>
         </div>
       )}
+      </SearchContextProvider>
       </AppContext.Provider>
     </div>
   );

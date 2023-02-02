@@ -30,7 +30,6 @@ interface oneMealType {
 const OneMeal = () => {
   const [oneMeal, setOneMeal] = useState<oneMealType>();
   const { id } = useParams();
-  console.log(oneMeal);
 
   const fetchOneMeal = async () => {
     const res = await fetch(
@@ -57,9 +56,20 @@ const OneMeal = () => {
           <h1>Name: {oneMeal?.strMeal}</h1>
           <h2>Country: {oneMeal?.strArea}</h2>
           <h3>{oneMeal?.strTags}</h3>
-          <p><span style={{fontWeight:'bold', fontSize:'20px'}}>How to prepare: </span>{oneMeal?.strInstructions}</p>
-          <p>Ingrediant: {oneMeal?.strIngredient1} </p>
-          <p></p>
+          <p>
+            <span style={{ fontWeight: "bold", fontSize: "20px" }}>
+              How to prepare:{" "}
+            </span>
+            {oneMeal?.strInstructions}
+          </p>
+          <p>
+            Ingrediant: {oneMeal?.strIngredient1}, {oneMeal?.strIngredient2},{" "}
+            {oneMeal?.strIngredient3},{oneMeal?.strIngredient4},
+            {oneMeal?.strIngredient5},{oneMeal?.strIngredient6},
+            {oneMeal?.strIngredient7},{oneMeal?.strIngredient8}{" "}
+          </p>
+          <p>This is taken from: <a href={oneMeal?.strSource} target='_blank'>This site</a></p>
+          <p>If you want to see video click on link <a href={oneMeal?.strYoutube} target='_blank'>Youtube VIdeo</a></p>
         </div>
       </div>
     </div>

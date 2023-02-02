@@ -15,7 +15,6 @@ const Paging = ({maxPageNumber}:MaxPageNumber) => {
         {
           numbers.map((item,id)=>{
             return (
-                
               <PageNumber number={item} key={id}  />
             )
           })
