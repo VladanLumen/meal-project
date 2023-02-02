@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import HomePage from "./pages/HomePage/HomePage";
@@ -11,10 +11,24 @@ interface oneMealType {
   idMeal:number
 }
 
+export const AppContext = createContext({});
+
 function App() {
   const [isLogged, setIsLogged] = useState(true);
+  const [favoriteIngredients, setIngredients] = useState<string[]>([]);
+  const [favoriteMeals, setMeals] = useState<string[]>([]);
+
+  const addFavoriteMeal = (idMeal:string)=>{
+    setMeals([...favoriteMeals,idMeal])
+  }
+  const addFavoriteIngredient = (idIngredient:string)=>{
+    setIngredients([...favoriteIngredients,idIngredient]);
+  }
+
+
   return (
     <div>
+      <AppContext.Provider value={{favoriteIngredients,favoriteMeals,addFavoriteMeal,addFavoriteIngredient}}>
       {isLogged ? (
         <div>
           <Routes>
@@ -31,6 +45,7 @@ function App() {
           </Routes>
         </div>
       )}
+      </AppContext.Provider>
     </div>
   );
 }
