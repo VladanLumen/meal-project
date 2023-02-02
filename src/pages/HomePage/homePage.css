@@ -16,9 +16,6 @@
 }
 
 
-
-
-
 .meal-card {
     width: 350px;
     height: 450px;
@@ -52,6 +49,10 @@
   .fav-icon:hover {
     opacity: 0.8;
   }
+  .fav-icon:active {
+    transform: scale(1.1);
+  }
+
   
   .meal-img {
     width: 100%;
@@ -89,41 +90,58 @@
 
 
 
-.paging {
-    background-color: rgb(255, 243, 138);
-    height: 10vh;
+  .paging {
     display: flex;
-    align-items: center;
     justify-content: center;
-    gap: 5px;
-}
+    align-items: center;
+  }
+  
+  .paging > div {
+    padding: 8px 12px;
+    margin: 0 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .paging > div:hover {
+    background-color: #333;
+    color: #fff;
+  }
 
-.pageNumber {
-    width: 40px;
-    height: 40px;
-    text-align: center;
+  .pageNumber {
     display: flex;
     align-items: center;
     justify-content: center;
-    transform: scale(1);
-    border: 1px solid black;
-}
-
-.pageNumberClicked {
-    border: 2px solid blue;
-    width: 40px;
-    height: 40px;
     text-align: center;
+    padding: 8px 12px;
+    margin: 0 10px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .pageNumber:hover {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .pageNumberClicked {
     display: flex;
     align-items: center;
     justify-content: center;
-}
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+  }
 
 
 @media (max-width:2560px) {
     .pageNumber {
-        height: 70px;
-        width: 70px;
+        height: 50px;
+        width: 50px;
     }
 
     .pageNumberClicked {
