@@ -7,10 +7,6 @@ import OneMeal from "./pages/OneMeal/OneMeal";
 import Register from "./pages/Register/Register";
 
 
-interface oneMealType {
-  idMeal:number
-}
-
 export const AppContext = createContext({});
 
 function App() {
@@ -19,12 +15,13 @@ function App() {
   const [favoriteMeals, setMeals] = useState<string[]>([]);
 
   const addFavoriteMeal = (idMeal:string)=>{
-    setMeals([...favoriteMeals,idMeal])
+    if(!favoriteMeals.includes(idMeal)){
+      setMeals([...favoriteMeals,idMeal])
+    }
   }
   const addFavoriteIngredient = (idIngredient:string)=>{
     setIngredients([...favoriteIngredients,idIngredient]);
   }
-
 
   return (
     <div>

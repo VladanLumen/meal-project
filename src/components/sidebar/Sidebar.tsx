@@ -12,8 +12,8 @@ const Sidebar = () => {
 
   const appContext = useContext(AppContext) as {favoriteIngredients:string[],favoriteMeals:string[],addFavoriteMeal:(arg:string)=>{},addFavoriteIngredient:(arg:string)=>{}};
   const {favoriteIngredients,favoriteMeals,addFavoriteMeal,addFavoriteIngredient} = appContext;
-  console.info(favoriteIngredients);
-  console.info(favoriteMeals);
+
+  
   // useEffect(() => {
   //   const fetchIngredients = async () => {
   //     const response = await fetch('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
@@ -44,6 +44,7 @@ const Sidebar = () => {
   //   selectedIngredientsNames.push(selectedIngredients[i]['strIngredient']);
   // }
   // console.info(selectedIngredientsNames);
+
 
 
   return (
