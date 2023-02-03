@@ -68,11 +68,19 @@
   }
 }
 
-@media (max-width: 1440px) {
+@media (max-width: 1058px) {
   .sidebarSection {
     font-size: 1.6rem;
   }
   .item {
     font-size: 1.1rem;
+  }
+}
+@media (max-width: 550px) {
+  .sidebarSection {
+    font-size: 1.3rem;
+  }
+  .item {
+    font-size: 0.8rem;
   }
 }
