@@ -1,40 +1,120 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
-import { UserContext, UserType } from '../../UserContext';
-import './Register.css'
+import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import "./Register.css";
 
-const Register = () => {
+interface User {
+  email: string;
+  name: string;
+  password: string;
+}
 
-  const userContext = useContext(UserContext) as{user:UserType,setUser:()=>{}};
-  const {user,setUser} = userContext;
+interface UsersContext {
+  users: User[];
+  setUsers: React.Dispatch<React.SetStateAction<User[]>>;
+}
 
-  console.info(user);
+const UsersContext = React.createContext<UsersContext | undefined>(undefined);
+
+const UserRegistration = () => {
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+
+  const context = useContext(UsersContext);
+  console.log(context);
+  
+  if (!context) {
+    throw new Error("Context must be used within UsersContextProvider");
+  }
+  const { users, setUsers} = context;
+
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (password !== confirmPassword) {
+      alert("Password does not match");
+      return;
+    }
+    const newUser: User = { email, name, password};
+    setUsers([...users, newUser]);
+    localStorage.setItem("users", JSON.stringify([...users, newUser]));
+  };
+
   return (
-      <div className="register-background">
-      <form className='register-form'>
+
+    <div className="register-background">
+      <form className="register-form" onSubmit={handleSubmit}>
         <h3>Register Here</h3>
-
-        <label htmlFor="" className="register-label">Email</label>       
-         <input type="text" className="register-input" placeholder="E-mail" />
-
-
-        <label htmlFor="" className="register-label">Username</label>
-         <input type="text" className="register-input" placeholder="Username" />
-
-         <label htmlFor="" className="register-label">Password</label>
-         <input type="text" className="register-input" placeholder="Password" /> 
-
-        <label htmlFor="" className="register-label">Confirm Password</label>
-         <input type="text" className="register-input" placeholder="Confirm Password" />
-
-        <button className='register-button'>Register</button>
-        <p className='register-par'>
+        <label htmlFor="" className="register-label">
+          Email
+        </label>
+        <input
+          className="register-input"
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <label htmlFor="" className="register-label">
+          Username
+        </label>
+        <input
+          className="register-input"
+          type="text"
+          name="username"
+          placeholder="Username"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <label htmlFor="" className="register-label">
+          Password
+        </label>
+        <input
+          className="register-input"
+          type="password"
+          name="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+          required
+        />
+        <label htmlFor="" className="register-label">
+          Confirm Password
+        </label>
+        <input
+          className="register-input"
+          type="password"
+          placeholder="Confirm Password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        <button className="register-button" onClick={() => window.location.assign("/")} >Register</button>
+        <p className="register-par">
           Allready have account?
-        <Link className="register" to='/'> Login here</Link>
+          <Link className="register" to="/">
+            {" "}
+            Login here
+          </Link>
         </p>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export const UsersProvider = ({ children }: any) => {
+  const [term, setTerm] = useState(false)  
+  const [users, setUsers] = useState<User[]>(
+    JSON.parse(localStorage.getItem("users") || "[]")
+  );
+
+  return (
+    <UsersContext.Provider value={{ users, setUsers }}>
+      {children}
+    </UsersContext.Provider>
+  );
+};
+
+export default UserRegistration;

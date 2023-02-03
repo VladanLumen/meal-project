@@ -1,23 +1,29 @@
-import { createContext, useState } from "react";
+import React, { useState } from 'react';
 
-export interface UserType{
-    name:string;
-    password: string;
-    email:string;
+interface UserData {
+  username: string;
+  password: string;
 }
 
-export const UserContext = createContext({});
-
-
-export const UserContextProvider = ({children}:any) =>{
-    const [user, setUser] = useState<UserType[]>([]);
-
-    const setUsernameFunc = (data:UserType) =>{
-        setUser([...user,data]);
-    }
-
-    const value = {
-        user: user,setUsernameFunc
-    };
-    return <UserContext.Provider value={value}>{children}</UserContext.Provider>
+interface UserContextType {
+  userData: UserData | null;
+  setUserData: React.Dispatch<React.SetStateAction<UserData | null>>;
 }
+
+const UserContext = React.createContext<UserContextType>({
+  userData: null,
+  setUserData: () => {},
+});
+
+
+
+export const UserProvider: React.FC = ({ children }:any) => {
+    const [userData, setUserData] = useState<UserData | null>(null);
+
+
+  return (
+    <UserContext.Provider value={{ userData, setUserData}}>
+      {children}
+    </UserContext.Provider>
+  );
+};

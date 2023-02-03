@@ -1,12 +1,11 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { SearchContextProvider } from "./components/topbar/SearchContext";
 import HomePage from "./pages/HomePage/HomePage";
 import Login from "./pages/LoginPage/Login";
 import OneMeal from "./pages/OneMeal/OneMeal";
-import Register from "./pages/Register/Register";
-import { UserContext, UserContextProvider } from "./UserContext";
+import Register, { UsersProvider } from "./pages/Register/Register";
 
 
 export const AppContext = createContext({});
@@ -34,7 +33,8 @@ function App() {
     <div>
       <AppContext.Provider value={{favoriteIngredients,favoriteMeals,addFavoriteMeal,addFavoriteIngredient, deleteMeal}}>
         <SearchContextProvider>
-          <UserContextProvider>
+    <UsersProvider>
+
       {isLogged ? (
         <div>
           <Routes>
@@ -51,7 +51,7 @@ function App() {
           </Routes>
         </div>
       )}
-      </UserContextProvider>
+      </UsersProvider>
       </SearchContextProvider>
       </AppContext.Provider>
     </div>

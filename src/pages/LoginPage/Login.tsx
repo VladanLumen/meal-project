@@ -1,14 +1,9 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Login.css";
-import { UserContext, UserType } from "../../UserContext";
 
 const Login = () => {
 
-  const userContext = useContext(UserContext) as{user:UserType,setUser:()=>{}};
-  const {user,setUser} = userContext;
-
-  console.info(user);
 
   return (
       <div className="login-background">
