@@ -1,17 +1,23 @@
 import { createContext, useState } from "react";
 
+export interface UserType{
+    name:string;
+    password: string;
+    email:string;
+}
+
 export const UserContext = createContext({});
 
 
 export const UserContextProvider = ({children}:any) =>{
-    const [username, setUsername] = useState<String>(``);
+    const [user, setUser] = useState<UserType[]>([]);
 
-    const setUsernameFunc = (name:String) =>{
-        setUsername(name);
+    const setUsernameFunc = (data:UserType) =>{
+        setUser([...user,data]);
     }
 
     const value = {
-        username,setUsernameFunc
+        user: user,setUsernameFunc
     };
     return <UserContext.Provider value={value}>{children}</UserContext.Provider>
 }

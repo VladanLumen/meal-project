@@ -18,7 +18,7 @@ const Meals: React.FC<MealsProps> = ({data, id}) => {
   return (
     <div>
       <div className="meal-card" key={id}>
-        <h1 className="meal-title">{data.strArea}</h1>
+        <h1 className="meal-title">{data.strMeal}</h1>
         <img onClick={() => addFavoriteMeal(data.strArea)} src={favIcon} alt='favourite' className="fav-icon"/>
         <img className="meal-img" src={data.strMealThumb} />
         <p className="meal-desc">{data.strInstructions.slice(0, 230)}</p>

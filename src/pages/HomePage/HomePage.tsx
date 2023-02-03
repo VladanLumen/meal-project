@@ -12,6 +12,7 @@ export interface MealType {
   strMealThumb: string;
   strInstructions: string;
   idMeal: number;
+  strMeal: string;
 }
 
 interface PageNumber {
@@ -76,25 +77,30 @@ const HomePage: React.FC = () => {
 
               return (
                 <>
+                {item === null?
+                "Ne poostoji proizvoid" :
+                <>
                   {item
                     .slice(
                       (currentPage - 1) * mealsPerPage,
                       currentPage * mealsPerPage
-                    )
-                    .map((meal: any) => {
-                      return (
-                        <>
+                      )
+                      .map((meal: any) => {
+                        return (
+                          <>
                           <SearchedMeals data={meal} />
                         </>
                       );
                     })}
                   <HomePageContext.Provider
-                    value={{ currentPage, setCurrentPage }}
+                  value={{ currentPage, setCurrentPage }}
                   >
                     <Paging
                       maxPageNumber={Math.ceil(item.length / mealsPerPage)}
-                    />
+                      />
                   </HomePageContext.Provider>
+                  </>
+                    }
                 </>
               );
             })}

@@ -17,7 +17,7 @@ const SearchedMeals = ({ data, id }: any) => {
 
   return (
             <div className="search-card" key={id}>
-              <h1 className="search-title">{data.strArea}</h1>
+              <h1 className="search-title">{data.strMeal}</h1>
               <img
                 onClick={() => addFavoriteMeal(data.strArea)}
                 src={favIcon}
