@@ -50,7 +50,7 @@ const HomePage: React.FC = () => {
 
   return (
     <div>
-      <Topbar nameFirstLetter={"B"} />
+      <Topbar />
       <div className="mainSection">
         <div className="msLeft">
           <Sidebar />

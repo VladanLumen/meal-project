@@ -1,13 +1,18 @@
 import React, { useContext, useState } from "react";
-import { Link, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { createContext } from "react";
 import { AppContext } from "../../App";
-import { UserProvider } from "../../UserContext";
 import "./Login.css";
 
 
 interface IAccount {
   password: string,
   email: string
+}
+interface User {
+  email: string;
+  name: string;
+  password: string;
 }
 
 const Login = () => {
@@ -22,8 +27,7 @@ const {isLogged, setIsLogged}:any = useContext(AppContext)
 const logged = JSON.parse(localStorage.getItem("users") || '{}')
 const handleLogin = () =>{
   
-  if(input?.email === logged.email && input?.password === logged.password){
-    localStorage.setItem("users", JSON.stringify(input))
+  if(input?.email === logged[0].email && input?.password === logged[0].password){
     // window.location.assign('/')
     setIsLogged(true)
     return alert("SVAKA CAST")
@@ -35,8 +39,7 @@ const handleLogin = () =>{
   }
 }
 
-console.log(isLogged, setIsLogged);
-  console.log(input, logged);
+  console.log(logged);
   
   return (
       <div className="login-background">
@@ -68,4 +71,17 @@ console.log(isLogged, setIsLogged);
   );
 };
 
-export default Login;
+export const LoginContext = createContext<{ users: User[] } | undefined>(undefined);
+
+export const LoginProvider = ({ children }: any) => {
+  const [users, setUsers] = useState<User[]>(
+    JSON.parse(localStorage.getItem("users") || "[]")
+  );
+    
+    return (
+    <LoginContext.Provider value={{ users }}>
+    {children}
+    </LoginContext.Provider>
+    );
+    };
+export default Login

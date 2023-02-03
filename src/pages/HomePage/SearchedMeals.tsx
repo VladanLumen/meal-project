@@ -19,7 +19,7 @@ const SearchedMeals = ({ data, id }: any) => {
             <div className="search-card" key={id}>
               <h1 className="search-title">{data.strMeal}</h1>
               <img
-                onClick={() => addFavoriteMeal(data.strArea)}
+                onClick={() => addFavoriteMeal(data.strMeal)}
                 src={favIcon}
                 alt="favourite"
                 className="fav-icon"

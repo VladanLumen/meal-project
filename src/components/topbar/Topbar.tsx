@@ -1,13 +1,17 @@
-import React from 'react'
 import './topbar.css'
 import Searchbar from './Search'
+import { useContext } from 'react'
+import { LoginContext } from '../../pages/LoginPage/Login'
 
+const Topbar = () => {
+    const {users}:any = useContext(LoginContext)
+    console.log(users.email);
+    
 
-const Topbar = ({ nameFirstLetter }) => {
     return (
         <div className='topbar'>
             <div className="tleft">
-               <NamePlaceholder nameFirstLetter={nameFirstLetter}/>
+               {users[0].name.slice(0 , 1)}
             </div>
             <div className="tright">
                 <Searchbar/>
@@ -16,7 +20,7 @@ const Topbar = ({ nameFirstLetter }) => {
     )
 }
 
-const NamePlaceholder = ({nameFirstLetter}) => {
+const NamePlaceholder = ({nameFirstLetter}:any) => {
     return (
         <div className="namePlaceholder">
             <p className="nameFirstLetter">
@@ -25,8 +29,6 @@ const NamePlaceholder = ({nameFirstLetter}) => {
         </div>
     )
 }
-
-//www.themealdb.com/api/json/v1/1/search.php?f=a
 
 <Searchbar />
 
