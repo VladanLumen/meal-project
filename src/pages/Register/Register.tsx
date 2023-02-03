@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { UserContext, UserType } from '../../UserContext';
 import './Register.css'
 
 const Register = () => {
+
+  const userContext = useContext(UserContext) as{user:UserType,setUser:()=>{}};
+  const {user,setUser} = userContext;
+
+  console.info(user);
   return (
       <div className="register-background">
       <form className='register-form'>

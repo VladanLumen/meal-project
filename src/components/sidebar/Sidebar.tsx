@@ -3,9 +3,9 @@ import './sidebar.css'
 import { AppContext } from '../../App';
 
 type SidebarSection = {
-  name:string,
-  data:string[]
-  showDelete:boolean
+  name:string;
+  data:string[];
+  showDelete:boolean;
 }
 
 
@@ -24,17 +24,22 @@ const Sidebar = () => {
 }
 
 
+
+
 const SidebarSection = ({name,data,showDelete}:SidebarSection) => {
 
+  
+  
   const appContext = useContext(AppContext) as {favoriteIngredients:string[],favoriteMeals:string[],addFavoriteMeal:(arg:string)=>{},addFavoriteIngredient:(arg:string)=>{},deleteMeal:(arg:string)=>{}};
   const {deleteMeal} = appContext;
-
+  
   return (
     <div className='sidebarSection'>
       <p className="sectionName">{name}</p>
       <div className="sectionItems">
       {
         data.map((item,id)=>{
+          
           return (
             <div className="itemWrap" key={id}>
               <p key={id} className="item">{item}</p>

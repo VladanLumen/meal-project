@@ -6,6 +6,7 @@ import "./homePage.css";
 import Paging from "./Paging";
 import { SearchContext } from "../../components/topbar/SearchContext";
 import SearchedMeals from "./SearchedMeals";
+import ErrorPage from "../ErrorPage/ErrorPage";
 
 export interface MealType {
   strArea: string;
@@ -78,7 +79,8 @@ const HomePage: React.FC = () => {
               return (
                 <>
                 {item === null?
-                "Ne poostoji proizvoid" :
+                  <ErrorPage />
+                  :
                 <>
                   {item
                     .slice(
