@@ -11,7 +11,7 @@ import Register, { UsersProvider } from "./pages/Register/Register";
 export const AppContext = createContext({});
 
 function App() {
-  const [isLogged, setIsLogged] = useState(true);
+  const [isLogged, setIsLogged] = useState(false);
   const [favoriteIngredients, setIngredients] = useState<string[]>([]);
   const [favoriteMeals, setMeals] = useState<string[]>([]);
 
@@ -31,7 +31,7 @@ function App() {
 
   return (
     <div>
-      <AppContext.Provider value={{favoriteIngredients,favoriteMeals,addFavoriteMeal,addFavoriteIngredient, deleteMeal}}>
+      <AppContext.Provider value={{favoriteIngredients,favoriteMeals,addFavoriteMeal,addFavoriteIngredient, deleteMeal,isLogged, setIsLogged}}>
         <SearchContextProvider>
     <UsersProvider>
 

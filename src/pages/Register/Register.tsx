@@ -91,7 +91,7 @@ const UserRegistration = () => {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <button className="register-button" onClick={() => window.location.assign("/")} >Register</button>
+        <button className="register-button" >Register</button>
         <p className="register-par">
           Allready have account?
           <Link className="register" to="/">
@@ -105,7 +105,6 @@ const UserRegistration = () => {
 };
 
 export const UsersProvider = ({ children }: any) => {
-  const [term, setTerm] = useState(false)  
   const [users, setUsers] = useState<User[]>(
     JSON.parse(localStorage.getItem("users") || "[]")
   );
