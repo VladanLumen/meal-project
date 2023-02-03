@@ -93,3 +93,9 @@
     font-size: 0.7rem;
   }
 }
+
+@media (max-width:360px) {
+  .sectionName{
+    font-size: 0.8rem;
+  }
+}
