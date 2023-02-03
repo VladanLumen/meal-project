@@ -30,8 +30,9 @@ const HomePage: React.FC = () => {
   const searchContext = useContext(SearchContext) as {
     myMeal: string[];
     setMyMealFunc: (arg: string) => {};
+    clearMyMealFunc:()=>{}
   };
-  const { myMeal, setMyMealFunc } = searchContext;
+  const { myMeal, setMyMealFunc,clearMyMealFunc } = searchContext;
 
   const fetchData = async () => {
     const res = await fetch(
@@ -43,7 +44,9 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     fetchData();
-  }, [searchContext]);
+  }, []);
+
+  // console.info(data);
 
   return (
     <div>
@@ -52,9 +55,12 @@ const HomePage: React.FC = () => {
         <div className="msLeft">
           <Sidebar />
         </div>
-        {myMeal.length === 0 ? (
+        <>{console.info(myMeal)}</>
+        {myMeal.length === 0 ? 
+        (
           <div className="msRight">
-            {data
+            {
+            data
               .slice(
                 (currentPage - 1) * mealsPerPage,
                 currentPage * mealsPerPage
@@ -70,15 +76,17 @@ const HomePage: React.FC = () => {
               <Paging maxPageNumber={Math.ceil(data.length / mealsPerPage)} />
             </HomePageContext.Provider>
           </div>
-        ) : (
+        )
+        :
+        (
           <div className="msRight">
-            <>{console.log("MY MEAL", myMeal)}</>
-            {myMeal.map((item: any, id) => {
+            {/* <>{console.info("MY MEAL: " +myMeal)}</> */}
+            {
+            myMeal.map((item: any, id) => {
               console.log("ITEM", item);
-
               return (
                 <>
-                {item === null?
+                {item === null ?
                   <ErrorPage />
                   :
                 <>
@@ -107,7 +115,8 @@ const HomePage: React.FC = () => {
               );
             })}
           </div>
-        )}
+        )
+        }
       </div>
     </div>
   );

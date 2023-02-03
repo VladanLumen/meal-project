@@ -12,7 +12,7 @@ import { UserContext, UserContextProvider } from "./UserContext";
 export const AppContext = createContext({});
 
 function App() {
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(true);
   const [favoriteIngredients, setIngredients] = useState<string[]>([]);
   const [favoriteMeals, setMeals] = useState<string[]>([]);
 
