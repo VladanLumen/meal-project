@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import Login from "./pages/LoginPage/Login";
 import OneMeal from "./pages/OneMeal/OneMeal";
 import Register from "./pages/Register/Register";
+import { UserContext, UserContextProvider } from "./UserContext";
 
 
 export const AppContext = createContext({});
@@ -33,6 +34,7 @@ function App() {
     <div>
       <AppContext.Provider value={{favoriteIngredients,favoriteMeals,addFavoriteMeal,addFavoriteIngredient, deleteMeal}}>
         <SearchContextProvider>
+          <UserContextProvider>
       {isLogged ? (
         <div>
           <Routes>
@@ -49,6 +51,7 @@ function App() {
           </Routes>
         </div>
       )}
+      </UserContextProvider>
       </SearchContextProvider>
       </AppContext.Provider>
     </div>
