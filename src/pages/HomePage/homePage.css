@@ -173,3 +173,35 @@
         margin: 10px;
     }
 }
+@media (max-width:500px) {
+  .pageNumber {
+    height: 40px;
+    width: 40px;
+}
+
+.pageNumberClicked {
+    height: 40px;
+    width: 40px;
+} 
+}
+@media (max-width:500px) {
+  .meal-card{
+    width: 250px;
+  }
+  .meal-desc{
+    font-size: 12.5px;
+  }
+}
+
+
+@media (max-width:360px) {
+  .meal-card{
+    width: 200px;
+  }
+  .meal-desc{
+    font-size: 11px;
+  }
+  .meal-btn{
+    scale: 0.8;
+  }
+}
