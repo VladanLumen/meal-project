@@ -7,6 +7,7 @@ import Login from "./pages/LoginPage/Login";
 import OneMeal from "./pages/OneMeal/OneMeal";
 import Register from "./pages/Register/Register";
 import { UserContext, UserContextProvider } from "./UserContext";
+import ErrorPage from "./pages/ErrorPage/ErrorPage";
 
 
 export const AppContext = createContext({});
@@ -53,7 +54,7 @@ function App() {
       )}
       </UserContextProvider>
       </SearchContextProvider>
-      </AppContext.Provider>
+      </AppContext.Provider> 
     </div>
   );
 }
