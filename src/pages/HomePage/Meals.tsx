@@ -40,7 +40,7 @@ const Meals: React.FC<MealsProps> = ({data, id}) => {
         <img onClick={() => {addFavoriteMeal(data.strMeal); addFavoriteIngredients();}} src={favIcon} alt='favourite' className="fav-icon"/>
         <img className="meal-img" src={data.strMealThumb} />
         <p className="meal-desc">{data.strInstructions.slice(0, 230)}</p>
-        <Link to={`/${data.idMeal}`}><button className="meal-btn">Learn More</button></Link>
+        <Link to={`/${data.idMeal}`}><button className="meal-btn">Learn More</button></Link> 
       </div>
     </div>
   );
