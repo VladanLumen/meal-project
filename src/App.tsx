@@ -25,6 +25,9 @@ function App() {
     if(!favoriteIngredients.includes(idIngredient))
     setIngredients([...favoriteIngredients,idIngredient]);
   }
+  const addFavoriteIngredientArray = (newFavorites:string[])=>{
+    setIngredients([...Array.from(new Set([...favoriteIngredients,...newFavorites]))]);
+  }
 
   const deleteMeal = (meal:string) => {
     setMeals(favoriteMeals.filter(i => i !== meal));
@@ -32,7 +35,7 @@ function App() {
 
   return (
     <div>
-      <AppContext.Provider value={{favoriteIngredients,favoriteMeals,addFavoriteMeal,addFavoriteIngredient, deleteMeal}}>
+      <AppContext.Provider value={{favoriteIngredients,favoriteMeals,addFavoriteMeal,addFavoriteIngredient, deleteMeal,addFavoriteIngredientArray}}>
         <SearchContextProvider>
           <UserContextProvider>
       {isLogged ? (

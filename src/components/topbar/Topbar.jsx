@@ -8,6 +8,7 @@ const Topbar = ({ nameFirstLetter }) => {
         <div className='topbar'>
             <div className="tleft">
                <NamePlaceholder nameFirstLetter={nameFirstLetter}/>
+               <a className='homeBtn' href='/'>Home</a>
             </div>
             <div className="tright">
                 <Searchbar/>
