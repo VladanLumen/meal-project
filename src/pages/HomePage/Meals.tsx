@@ -12,8 +12,8 @@ interface MealsProps {
 
 const Meals: React.FC<MealsProps> = ({data, id}) => {
 
-  const appContext = useContext(AppContext) as {favoriteIngredients:string[],favoriteMeals:string[],addFavoriteMeal:(arg:string)=>{},addFavoriteIngredient:(arg:string)=>{},addFavoriteIngredientArray:(arg:string[])=>{}};
-  const {addFavoriteMeal,addFavoriteIngredient,addFavoriteIngredientArray} = appContext;
+  const appContext = useContext(AppContext) as {favoriteIngredients:string[],favoriteMeals:string[],addFavoriteMeal:(arg:string)=>{},addFavoriteIngredient:(arg:string)=>{},addFavoriteIngredientArray:(arg:string[])=>{},isDark:boolean};
+  const {addFavoriteMeal,addFavoriteIngredient,addFavoriteIngredientArray,isDark} = appContext;
   
 
   const addFavoriteIngredients =()=>{
@@ -35,11 +35,11 @@ const Meals: React.FC<MealsProps> = ({data, id}) => {
 
   return (
     <div key={id}>
-      <div className="meal-card">
-        <h1 className="meal-title">{data.strMeal}</h1>
+      <div className={`meal-card${isDark?'-dark':''}`}>
+        <h1 className={`meal-title${isDark?'-white':''}`}>{data.strMeal}</h1>
         <img onClick={() => {addFavoriteMeal(data.strMeal); addFavoriteIngredients();}} src={favIcon} alt='favourite' className="fav-icon"/>
         <img className="meal-img" src={data.strMealThumb} />
-        <p className="meal-desc">{data.strInstructions.slice(0, 230)}</p>
+        <p className={`meal-desc${isDark?'-white':''}`}>{data.strInstructions.slice(0, 230)}</p>
         <Link to={`/${data.idMeal}`}><button className="meal-btn">Learn More</button></Link> 
       </div>
     </div>
