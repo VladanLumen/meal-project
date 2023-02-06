@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import ReactToPrint from "react-to-print";
 import "./OneMeal.css";
+import print from '../../images/print.png'
 
 interface oneMealType {
   strArea: string;
@@ -30,6 +32,7 @@ interface oneMealType {
 const OneMeal = () => {
   const [oneMeal, setOneMeal] = useState<oneMealType>();
   const { id } = useParams();
+  const componentRef = useRef<HTMLDivElement>(null)
 
   const fetchOneMeal = async () => {
     const res = await fetch(
@@ -39,19 +42,23 @@ const OneMeal = () => {
       .then((data) => setOneMeal(data.meals[0]));
   };
 
+
   useEffect(() => {
     fetchOneMeal();
   }, []);
-  console.log(oneMeal);
+
 
   return (
-    <div className="single">
+    <div className="single" ref={componentRef }>
       <div className="single-meal">
         <div className="meal-image">
           <img src={oneMeal?.strMealThumb} />
         </div>
         <div className="meal-content">
-          <h1>Name: {oneMeal?.strMeal}</h1>
+          <h1 className="namePrint">Name: {oneMeal?.strMeal}  <ReactToPrint 
+  trigger={() => <img style={{width: '25px'}} src={print} />}
+  content={() => componentRef.current}
+/></h1>
           <h2>Country: {oneMeal?.strArea}</h2>
           <h3>Tag: {oneMeal?.strTags}</h3>
           <p>
