@@ -8,6 +8,7 @@ import { SearchContext } from "../../components/topbar/SearchContext";
 import SearchedMeals from "./SearchedMeals";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import { AppContext } from "../../App";
+import { SidebarContext } from "../../components/sidebar/SidebarContext";
 
 export interface MealType {
   strArea: string;
@@ -61,10 +62,13 @@ const HomePage: React.FC = () => {
   const {isDark} = appContext;
 
 
+ const sidebarContext = useContext(SidebarContext) as {showSidebar:boolean,toggleSidebar:()=>{}};
+
+
   return (
     <div>
       <Topbar />
-      <div className="mainSection">
+      <div className={`mainSection${sidebarContext.showSidebar?'':'Full'}`}>
         <div className="msLeft">
           <Sidebar />
         </div>

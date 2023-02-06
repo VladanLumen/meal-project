@@ -2,6 +2,10 @@
   display: grid;
   grid-template-columns: 20% 1fr;
 }
+.mainSectionFull {
+  display: grid;
+  grid-template-columns: 0% 1fr;
+}
 
 .msRight {
   display: flex;
@@ -15,7 +19,8 @@
   overflow-y: auto;
   margin-bottom: 70px;
 }
-.msRightDark{
+
+.msRightDark {
   display: flex;
   flex-wrap: wrap;
   border-radius: 15px;
@@ -46,7 +51,8 @@
   position: relative;
 
 }
-.meal-card-dark{
+
+.meal-card-dark {
   width: 350px;
   height: 450px;
   background-color: #fff;
@@ -110,6 +116,7 @@
   padding: 0 20px;
   margin-top: 20px;
   color: white;
+  
 }
 
 .meal-btn {
@@ -218,41 +225,73 @@
   }
 }
 
-@media (max-width:1440px) {
-}
 
 @media (max-width:910px) {
   .meal-card {
     margin: 10px;
+    width: 290px;
   }
 }
 
-@media (max-width:500px) {
+@media (max-width:680px) {
+  .mainSection {
+    grid-template-columns: 45% 1fr;
+  }
+  .meal-card{
+    width: 280px;
+  }
+  .meal-card-dark{
+    width: 280px;
+  }
+}
+
+@media (max-width:670px) {
+  .theme {
+    height: 60px;
+    width: 60px;
+  }
+  .meal-card{
+    width: 260px;
+  }
+  .meal-card-dark{
+    width: 260px;
+  }
+}
+
+@media (max-width:620px) {
   .pageNumber {
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
   }
 
   .pageNumberClicked {
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
   }
-}
-
-@media (max-width:500px) {
+  .theme{
+    height: 30px;
+    width: 30px;
+  }
   .meal-card {
-    width: 250px;
+    width: 220px;
   }
 
+  .meal-card-dark {
+    width: 220px;
+  }
   .meal-desc {
     font-size: 12.5px;
   }
 }
+@media (max-width:450px) {
 
-
-@media (max-width:360px) {
+}
+@media (max-width:420px) {
   .meal-card {
-    width: 200px;
+    width: 180px;
+  }
+  .meal-card-dark {
+    width: 180px;
   }
 
   .meal-desc {
@@ -261,5 +300,8 @@
 
   .meal-btn {
     scale: 0.8;
+  }
+  .theme{
+    margin-right: 10px;
   }
 }
