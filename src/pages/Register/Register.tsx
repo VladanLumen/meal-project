@@ -6,11 +6,14 @@ interface User {
   email: string;
   name: string;
   password: string;
+  userFavoriteMeals:string[];
 }
 
 interface UsersContext {
   users: User[];
   setUsers: React.Dispatch<React.SetStateAction<User[]>>;
+  userFavoriteMeals:string[];
+  setUserFavoriteMealsFunc:(newMeal:string)=>void;
 }
 
 const UsersContext = React.createContext<UsersContext | undefined>(undefined);
@@ -20,6 +23,9 @@ const UserRegistration = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [userFavoriteMeals, setUserFavoriteMeals] = useState<string[]>([]);
+
+
 
   const context = useContext(UsersContext);
   console.log(context);
@@ -36,7 +42,7 @@ const UserRegistration = () => {
       alert("Password does not match");
       return;
     }
-    const newUser: User = { email, name, password};
+    const newUser: User = { email, name, password,userFavoriteMeals};
     setUsers([...users, newUser]);
     localStorage.setItem("users", JSON.stringify([...users, newUser]));
   };
@@ -105,12 +111,16 @@ const UserRegistration = () => {
 };
 
 export const UsersProvider = ({ children }: any) => {
+  const [userFavoriteMeals, setUserFavoriteMeals] = useState<string[]>([]);
+  const setUserFavoriteMealsFunc = (newMeal:string) =>{
+    setUserFavoriteMeals([...userFavoriteMeals,newMeal])
+  }
   const [users, setUsers] = useState<User[]>(
     JSON.parse(localStorage.getItem("users") || "[]")
   );
 
   return (
-    <UsersContext.Provider value={{ users, setUsers }}>
+    <UsersContext.Provider value={{ users, setUsers,userFavoriteMeals,setUserFavoriteMealsFunc }}>
       {children}
     </UsersContext.Provider>
   );
