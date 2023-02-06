@@ -105,7 +105,6 @@ const UserRegistration = () => {
 };
 
 export const UsersProvider = ({ children }: any) => {
-  const [term, setTerm] = useState(false)  
   const [users, setUsers] = useState<User[]>(
     JSON.parse(localStorage.getItem("users") || "[]")
   );

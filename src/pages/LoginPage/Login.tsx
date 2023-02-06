@@ -23,11 +23,11 @@ const Login = () => {
 
 const {isLogged, setIsLogged}:any = useContext(AppContext)
 
-
 const logged = JSON.parse(localStorage.getItem("users") || '{}')
+
 const handleLogin = () =>{
   
-  if(input?.email === logged[0].email && input?.password === logged[0].password){
+  if(input?.email === logged.email && input?.password === logged.password){
     // window.location.assign('/')
     setIsLogged(true)
     return alert("SVAKA CAST")

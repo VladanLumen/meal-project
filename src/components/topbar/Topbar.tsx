@@ -5,13 +5,13 @@ import { LoginContext } from '../../pages/LoginPage/Login'
 
 const Topbar = () => {
     const {users}:any = useContext(LoginContext)
-    console.log(users.email);
+    
     
 
     return (
         <div className='topbar'>
             <div className="tleft">
-               {users[0].name.slice(0 , 1)}
+            <NamePlaceholder users={users} />
             </div>
             <div className="tright">
                 <Searchbar/>
@@ -20,11 +20,11 @@ const Topbar = () => {
     )
 }
 
-const NamePlaceholder = ({nameFirstLetter}:any) => {
+const NamePlaceholder = ({users}:any) => {
     return (
         <div className="namePlaceholder">
             <p className="nameFirstLetter">
-                {nameFirstLetter}
+            {users[0].name.slice(0 , 1)}
             </p>
         </div>
     )

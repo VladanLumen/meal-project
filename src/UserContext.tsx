@@ -24,6 +24,8 @@ const UserContext = React.createContext<UserContextType>({
 export const UserProvider: React.FC = ({ children }:any) => {
     const [userData, setUserData] = useState<UserData | null>(null);
     const [isLogged, setIsLogged] = useState(false)
+    console.log(userData);
+    
     
 
   return (
