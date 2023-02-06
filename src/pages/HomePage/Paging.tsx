@@ -11,7 +11,6 @@ interface MaxPageNumber{
 const Paging = ({maxPageNumber}:MaxPageNumber) => {
   const appContext = useContext(AppContext) as {favoriteIngredients:string[],favoriteMeals:string[],addFavoriteMeal:(arg:string)=>{},addFavoriteIngredient:(arg:string)=>{},addFavoriteIngredientArray:(arg:string[])=>{},isDark:boolean,setIsDarkFunc:(arg:boolean)=>{}};
   const {isDark,setIsDarkFunc} = appContext;
-  console.info(isDark);
     const numbers = [];
     for(let i=0;i<maxPageNumber;i++){
       numbers.push(i+1);

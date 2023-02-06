@@ -7,6 +7,8 @@
 }
 .singleDark{
   background-color: #1f1e1e;
+  height: 100vh;
+  padding-top: 10px;
 }
 
 
@@ -32,7 +34,7 @@
   display: flex;
   margin-top: 20px;
   width: 90%;
-  /* height: 90%; */
+  height: 90vh;
   background-color: #fff;
   border-radius: 10px;
   background-color: #1f1e1e;

@@ -62,80 +62,93 @@
     min-width: 150px;
 } */
 
-
 .topbar {
-    height: 60px;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    background-color: #05204a;
-    color: #fff;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #05204a;
+  color: #fff;
 }
 
 .tleft {
-    width: 50%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* text-indent: 20px; */
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* text-indent: 20px; */
 }
 
 .tright {
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .namePlaceholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background-color: black;
-    width: 50px;
-    height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: black;
+  width: 50px;
+  height: 50px;
 }
 
 .nameFirstLetter {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 .searchbar {
-    height: 40px;
-    width: 80%;
-    display: flex;
-    align-items: center;
-    background-color: #fff;
-    border-radius: 20px;
+  height: 40px;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 20px;
 }
 
 .sbLeft {
-    width: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .searchImage {
-    height: 20px;
-    width: 20px;
+  height: 20px;
+  width: 20px;
 }
 
 .sbRight {
-    width: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .searchInputField {
-    height: 100%;
-    width: 90%;
-    border: none;
-    outline: none;
-    font-size: 16px;
+  height: 100%;
+  width: 90%;
+  border: none;
+  outline: none;
+  font-size: 16px;
 }
-.homeBtn{
-    color: white;
+.homeBtn {
+  color: white;
+}
+.hover-on {
+    position: absolute;
+    font-size: x-large;
+    text-align: center;
+    z-index: 1;
+    left: 0;
+    margin-top: 5px;
+    width: 20%;
+    height: 20%;
+    background-color: black;
+}
+.hover-off {
+display: none;
 }
