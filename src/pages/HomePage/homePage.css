@@ -34,8 +34,6 @@
   background-color: grey;
 }
 
-
-
 .meal-card {
   width: 350px;
   height: 450px;
@@ -49,7 +47,6 @@
   align-items: center;
   text-align: center;
   position: relative;
-
 }
 
 .meal-card-dark {
@@ -98,7 +95,6 @@
   transform: scale(1.1);
 }
 
-
 .meal-img {
   width: 100%;
   height: 200px;
@@ -116,7 +112,6 @@
   padding: 0 20px;
   margin-top: 20px;
   color: white;
-  
 }
 
 .meal-btn {
@@ -137,8 +132,6 @@
   color: #333;
 }
 
-
-
 .paging {
   display: flex;
   justify-content: center;
@@ -151,7 +144,7 @@
   padding: 10px 0;
 }
 
-.paging>div {
+.paging > div {
   padding: 8px 12px;
   margin: 0 10px;
   border: 1px solid #333;
@@ -160,7 +153,7 @@
   transition: all 0.2s ease-in-out;
 }
 
-.paging>div:hover {
+.paging > div:hover {
   background-color: #333;
   color: #fff;
 }
@@ -199,9 +192,7 @@
   margin-right: 20px;
 }
 
-
-
-@media (max-width:2560px) {
+@media (max-width: 2560px) {
   .pageNumber {
     height: 50px;
     width: 50px;
@@ -213,7 +204,7 @@
   }
 }
 
-@media (max-width:1440px) {
+@media (max-width: 1440px) {
   .pageNumber {
     height: 60px;
     width: 60px;
@@ -225,44 +216,43 @@
   }
 }
 
-
-@media (max-width:910px) {
+@media (max-width: 910px) {
   .meal-card {
     margin: 10px;
     width: 290px;
   }
 }
 
-@media (max-width:680px) {
+@media (max-width: 680px) {
   .mainSection {
     grid-template-columns: 45% 1fr;
   }
-  .meal-card{
+  .meal-card {
     width: 280px;
   }
-  .meal-card-dark{
+  .meal-card-dark {
     width: 280px;
   }
 }
 
-@media (max-width:670px) {
+@media (max-width: 670px) {
   .theme {
     height: 60px;
     width: 60px;
   }
-  .meal-card{
+  .meal-card {
     width: 260px;
   }
-  .meal-card-dark{
+  .meal-card-dark {
     width: 260px;
   }
-  .fav-icon{
+  .fav-icon {
     width: 20px;
     height: 20px;
   }
 }
 
-@media (max-width:620px) {
+@media (max-width: 620px) {
   .pageNumber {
     height: 30px;
     width: 30px;
@@ -272,7 +262,7 @@
     height: 30px;
     width: 30px;
   }
-  .theme{
+  .theme {
     height: 30px;
     width: 30px;
   }
@@ -288,7 +278,7 @@
   }
 }
 
-@media (max-width:420px) {
+@media (max-width: 420px) {
   .meal-card {
     width: 180px;
   }
@@ -303,7 +293,7 @@
   .meal-btn {
     scale: 0.8;
   }
-  .theme{
+  .theme {
     margin-right: 10px;
   }
 }
@@ -312,6 +302,6 @@
     width: 10px;
     height: 10px;
     position: absolute;
-    cursor: pointer; 
+    cursor: pointer;
   }
 }

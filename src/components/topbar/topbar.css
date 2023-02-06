@@ -139,21 +139,21 @@
   color: white;
 }
 .hover-on {
-    position: absolute;
-    font-size: x-large;
-    text-align: center;
-    z-index: 1;
-    left: 0;
-    margin-top: 5px;
-    width: 40%;
-    height: 20%;
-    background-color: #a8a8ad;
+  position: absolute;
+  font-size: x-large;
+  text-align: center;
+  z-index: 1;
+  left: 0;
+  margin-top: 5px;
+  width: 40%;
+  height: 20%;
+  background-color: #a8a8ad;
 }
 .hover-off {
-display: none;
+  display: none;
 }
-@media (max-width:1440px){
-  .our-user{
+@media (max-width: 1440px) {
+  .our-user {
     font-size: 1rem;
   }
 }
@@ -173,16 +173,9 @@ display: none;
   }
 } */
 
-
-
-
-
-
-
-
 @media screen and (max-width: 500px) {
-    .hover-on{
-      width: 100%;
-      z-index: 2;
-    }
+  .hover-on {
+    width: 100%;
+    z-index: 2;
+  }
 }

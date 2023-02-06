@@ -16,16 +16,16 @@ export interface MealType {
   strInstructions: string;
   idMeal: number;
   strMeal: string;
-  strIngredient1:string;
-  strIngredient2:string;
-  strIngredient3:string;
-  strIngredient4:string;
-  strIngredient5:string;
-  strIngredient6:string;
-  strIngredient7:string;
-  strIngredient8:string;
-  strIngredient9:string;
-  strIngredient10:string;
+  strIngredient1: string;
+  strIngredient2: string;
+  strIngredient3: string;
+  strIngredient4: string;
+  strIngredient5: string;
+  strIngredient6: string;
+  strIngredient7: string;
+  strIngredient8: string;
+  strIngredient9: string;
+  strIngredient10: string;
 }
 
 interface PageNumber {
@@ -42,9 +42,9 @@ const HomePage: React.FC = () => {
   const searchContext = useContext(SearchContext) as {
     myMeal: string[];
     setMyMealFunc: (arg: string) => {};
-    clearMyMealFunc:()=>{}
+    clearMyMealFunc: () => {};
   };
-  const { myMeal, setMyMealFunc,clearMyMealFunc } = searchContext;
+  const { myMeal, setMyMealFunc, clearMyMealFunc } = searchContext;
 
   const fetchData = async () => {
     const res = await fetch(
@@ -58,25 +58,32 @@ const HomePage: React.FC = () => {
     fetchData();
   }, []);
 
-  const appContext = useContext(AppContext) as {favoriteIngredients:string[],favoriteMeals:string[],addFavoriteMeal:(arg:string)=>{},addFavoriteIngredient:(arg:string)=>{},addFavoriteIngredientArray:(arg:string[])=>{},isDark:boolean,setIsDarkFunc:(arg:boolean)=>{}};
-  const {isDark} = appContext;
+  const appContext = useContext(AppContext) as {
+    favoriteIngredients: string[];
+    favoriteMeals: string[];
+    addFavoriteMeal: (arg: string) => {};
+    addFavoriteIngredient: (arg: string) => {};
+    addFavoriteIngredientArray: (arg: string[]) => {};
+    isDark: boolean;
+    setIsDarkFunc: (arg: boolean) => {};
+  };
+  const { isDark } = appContext;
 
-
- const sidebarContext = useContext(SidebarContext) as {showSidebar:boolean,toggleSidebar:()=>{}};
-
+  const sidebarContext = useContext(SidebarContext) as {
+    showSidebar: boolean;
+    toggleSidebar: () => {};
+  };
 
   return (
     <div>
       <Topbar />
-      <div className={`mainSection${sidebarContext.showSidebar?'':'Full'}`}>
+      <div className={`mainSection${sidebarContext.showSidebar ? "" : "Full"}`}>
         <div className="msLeft">
           <Sidebar />
         </div>
-        {myMeal.length === 0 ? 
-        (
-          <div className={`msRight${isDark?'Dark':''}`}>
-            {
-            data
+        {myMeal.length === 0 ? (
+          <div className={`msRight${isDark ? "Dark" : ""}`}>
+            {data
               .slice(
                 (currentPage - 1) * mealsPerPage,
                 currentPage * mealsPerPage
@@ -92,45 +99,41 @@ const HomePage: React.FC = () => {
               <Paging maxPageNumber={Math.ceil(data.length / mealsPerPage)} />
             </HomePageContext.Provider>
           </div>
-        )
-        :
-        (
-          <div className={`msRight${isDark?'Dark':''}`}>
-            {
-            myMeal.map((item: any, id) => {
+        ) : (
+          <div className={`msRight${isDark ? "Dark" : ""}`}>
+            {myMeal.map((item: any, id) => {
               return (
                 <>
-                {item === null ?
-                  <ErrorPage key={id} />
-                  :
-                <>
-                  {item
-                    .slice(
-                      (currentPage - 1) * mealsPerPage,
-                      currentPage * mealsPerPage
-                      )
-                      .map((meal: any, id:number) => {
-                        return (
-                          <>
-                          <SearchedMeals key={id} data={meal} />
-                        </>
-                      );
-                    })}
-                  <HomePageContext.Provider
-                  value={{ currentPage, setCurrentPage }}
-                  >
-                    <Paging
-                      maxPageNumber={Math.ceil(item.length / mealsPerPage)}
-                      />
-                  </HomePageContext.Provider>
-                  </>
-                    }
+                  {item === null ? (
+                    <ErrorPage key={id} />
+                  ) : (
+                    <>
+                      {item
+                        .slice(
+                          (currentPage - 1) * mealsPerPage,
+                          currentPage * mealsPerPage
+                        )
+                        .map((meal: any, id: number) => {
+                          return (
+                            <>
+                              <SearchedMeals key={id} data={meal} />
+                            </>
+                          );
+                        })}
+                      <HomePageContext.Provider
+                        value={{ currentPage, setCurrentPage }}
+                      >
+                        <Paging
+                          maxPageNumber={Math.ceil(item.length / mealsPerPage)}
+                        />
+                      </HomePageContext.Provider>
+                    </>
+                  )}
                 </>
               );
             })}
           </div>
-        )
-        }
+        )}
       </div>
     </div>
   );

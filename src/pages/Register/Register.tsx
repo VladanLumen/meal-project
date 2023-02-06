@@ -6,14 +6,14 @@ interface User {
   email: string;
   name: string;
   password: string;
-  userFavoriteMeals:string[];
+  userFavoriteMeals: string[];
 }
 
 interface UsersContext {
   users: User[];
   setUsers: React.Dispatch<React.SetStateAction<User[]>>;
-  userFavoriteMeals:string[];
-  setUserFavoriteMealsFunc:(newMeal:string)=>void;
+  userFavoriteMeals: string[];
+  setUserFavoriteMealsFunc: (newMeal: string) => void;
 }
 
 const UsersContext = React.createContext<UsersContext | undefined>(undefined);
@@ -25,16 +25,13 @@ const UserRegistration = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [userFavoriteMeals, setUserFavoriteMeals] = useState<string[]>([]);
 
-
-
   const context = useContext(UsersContext);
   console.log(context);
-  
+
   if (!context) {
     throw new Error("Context must be used within UsersContextProvider");
   }
-  const { users, setUsers} = context;
-
+  const { users, setUsers } = context;
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -42,13 +39,12 @@ const UserRegistration = () => {
       alert("Password does not match");
       return;
     }
-    const newUser: User = { email, name, password,userFavoriteMeals};
+    const newUser: User = { email, name, password, userFavoriteMeals };
     setUsers([...users, newUser]);
     localStorage.setItem("users", JSON.stringify([...users, newUser]));
   };
 
   return (
-
     <div className="register-background">
       <form className="register-form" onSubmit={handleSubmit}>
         <h3>Register Here</h3>
@@ -97,7 +93,12 @@ const UserRegistration = () => {
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <button className="register-button" onClick={() => window.location.assign("/")} >Register</button>
+        <button
+          className="register-button"
+          onClick={() => window.location.assign("/")}
+        >
+          Register
+        </button>
         <p className="register-par">
           Allready have account?
           <Link className="register" to="/">
@@ -112,15 +113,17 @@ const UserRegistration = () => {
 
 export const UsersProvider = ({ children }: any) => {
   const [userFavoriteMeals, setUserFavoriteMeals] = useState<string[]>([]);
-  const setUserFavoriteMealsFunc = (newMeal:string) =>{
-    setUserFavoriteMeals([...userFavoriteMeals,newMeal])
-  }
+  const setUserFavoriteMealsFunc = (newMeal: string) => {
+    setUserFavoriteMeals([...userFavoriteMeals, newMeal]);
+  };
   const [users, setUsers] = useState<User[]>(
     JSON.parse(localStorage.getItem("users") || "[]")
   );
 
   return (
-    <UsersContext.Provider value={{ users, setUsers,userFavoriteMeals,setUserFavoriteMealsFunc }}>
+    <UsersContext.Provider
+      value={{ users, setUsers, userFavoriteMeals, setUserFavoriteMealsFunc }}
+    >
       {children}
     </UsersContext.Provider>
   );

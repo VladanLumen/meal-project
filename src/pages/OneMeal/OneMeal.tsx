@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactToPrint from "react-to-print";
 import "./OneMeal.css";
-import print from '../../images/print.png'
+import print from "../../images/print.png";
 import { AppContext } from "../../App";
 
 interface oneMealType {
@@ -33,34 +33,43 @@ interface oneMealType {
 const OneMeal = () => {
   const [oneMeal, setOneMeal] = useState<oneMealType>();
   const { id } = useParams();
-  const componentRef = useRef<HTMLDivElement>(null)
+  const componentRef = useRef<HTMLDivElement>(null);
 
   const fetchOneMeal = async () => {
-     await fetch(
-      `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
-    )
+    await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
       .then((response) => response.json())
       .then((data) => setOneMeal(data.meals[0]));
   };
-
 
   useEffect(() => {
     fetchOneMeal();
   }, []);
 
-  const appContext = useContext(AppContext) as {favoriteIngredients:string[],favoriteMeals:string[],addFavoriteMeal:(arg:string)=>{},addFavoriteIngredient:(arg:string)=>{},addFavoriteIngredientArray:(arg:string[])=>{},isDark:boolean};
-  const {isDark} = appContext;
+  const appContext = useContext(AppContext) as {
+    favoriteIngredients: string[];
+    favoriteMeals: string[];
+    addFavoriteMeal: (arg: string) => {};
+    addFavoriteIngredient: (arg: string) => {};
+    addFavoriteIngredientArray: (arg: string[]) => {};
+    isDark: boolean;
+  };
+  const { isDark } = appContext;
   return (
-    <div className={`single${isDark?'Dark':''}`} ref={componentRef }>
+    <div className={`single${isDark ? "Dark" : ""}`} ref={componentRef}>
       <div className="single-meal">
         <div className="meal-image">
           <img src={oneMeal?.strMealThumb} alt={oneMeal?.strTags} />
         </div>
-        <div className={`meal-content${isDark?'Dark':''}`}>
-          <h1 className="namePrint">Name: {oneMeal?.strMeal}  <ReactToPrint 
-  trigger={() => <img style={{width: '25px'}} src={print} alt='Print' />}
-  content={() => componentRef.current}
-/></h1>
+        <div className={`meal-content${isDark ? "Dark" : ""}`}>
+          <h1 className="namePrint">
+            Name: {oneMeal?.strMeal}{" "}
+            <ReactToPrint
+              trigger={() => (
+                <img style={{ width: "25px" }} src={print} alt="Print" />
+              )}
+              content={() => componentRef.current}
+            />
+          </h1>
           <h2>Country: {oneMeal?.strArea}</h2>
           <h3>Tag: {oneMeal?.strTags}</h3>
           <p>

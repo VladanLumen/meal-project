@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState } from "react";
 
 interface UserData {
   username: string;
@@ -16,20 +16,18 @@ const UserContext = React.createContext<UserContextType>({
   userData: null,
   setUserData: () => {},
   isLogged: false,
-  setIsLogged: () => {}
+  setIsLogged: () => {},
 });
 
-
-
-export const UserProvider: React.FC = ({ children }:any) => {
-    const [userData, setUserData] = useState<UserData | null>(null);
-    const [isLogged, setIsLogged] = useState(false)
-    console.log(userData);
-    
-    
+export const UserProvider: React.FC = ({ children }: any) => {
+  const [userData, setUserData] = useState<UserData | null>(null);
+  const [isLogged, setIsLogged] = useState(false);
+  console.log(userData);
 
   return (
-    <UserContext.Provider value={{ userData, setUserData, isLogged, setIsLogged}}>
+    <UserContext.Provider
+      value={{ userData, setUserData, isLogged, setIsLogged }}
+    >
       {children}
     </UserContext.Provider>
   );

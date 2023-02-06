@@ -14,10 +14,9 @@ function App() {
   const [isLogged, setIsLogged] = useState(true);
   const [favoriteIngredients, setIngredients] = useState<string[]>([]);
   const [favoriteMeals, setMeals] = useState<string[]>([]);
-  const [isDark,setIsDark] = useState<boolean>(false);
+  const [isDark, setIsDark] = useState<boolean>(false);
 
-
-  const [help,setHelp] = useState({});
+  const [help, setHelp] = useState({});
 
   const addFavoriteMeal = (idMeal: string) => {
     if (!favoriteMeals.includes(idMeal)) {
@@ -28,19 +27,22 @@ function App() {
     if (!favoriteIngredients.includes(idIngredient))
       setIngredients([...favoriteIngredients, idIngredient]);
   };
-  const addFavoriteIngredientArray = (/*meal:string,*/ newFavorites:string[])=>{
+  const addFavoriteIngredientArray = (
+    /*meal:string,*/ newFavorites: string[]
+  ) => {
     // setHelp({"meal":meal,"ingredients":newFavorites})
-    setIngredients([...Array.from(new Set([...favoriteIngredients,...newFavorites]))]);
-  }
+    setIngredients([
+      ...Array.from(new Set([...favoriteIngredients, ...newFavorites])),
+    ]);
+  };
 
   const deleteMeal = (meal: string) => {
     setMeals(favoriteMeals.filter((i) => i !== meal));
   };
 
-  const setIsDarkFunc = (isDark:boolean)=>{
+  const setIsDarkFunc = (isDark: boolean) => {
     setIsDark(isDark);
-  }
-
+  };
 
   return (
     <div>
@@ -55,31 +57,31 @@ function App() {
           isLogged,
           setIsLogged,
           isDark,
-          setIsDarkFunc
+          setIsDarkFunc,
         }}
       >
         <SearchContextProvider>
-        <SidebarContextProvider>
-          <UsersProvider>
-            <LoginProvider>
-              {isLogged ? (
-                <div>
-                  <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/:id" element={<OneMeal />} />
-                  </Routes>
-                </div>
-              ) : (
-                <div>
-                  <Routes>
-                    <Route path="/" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                  </Routes>
-                </div>
-              )}
-            </LoginProvider>
-          </UsersProvider>
-      </SidebarContextProvider>
+          <SidebarContextProvider>
+            <UsersProvider>
+              <LoginProvider>
+                {isLogged ? (
+                  <div>
+                    <Routes>
+                      <Route path="/" element={<HomePage />} />
+                      <Route path="/:id" element={<OneMeal />} />
+                    </Routes>
+                  </div>
+                ) : (
+                  <div>
+                    <Routes>
+                      <Route path="/" element={<Login />} />
+                      <Route path="/register" element={<Register />} />
+                    </Routes>
+                  </div>
+                )}
+              </LoginProvider>
+            </UsersProvider>
+          </SidebarContextProvider>
         </SearchContextProvider>
       </AppContext.Provider>
     </div>
