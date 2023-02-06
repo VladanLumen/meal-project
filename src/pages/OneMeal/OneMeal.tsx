@@ -35,7 +35,7 @@ const OneMeal = () => {
   const componentRef = useRef<HTMLDivElement>(null)
 
   const fetchOneMeal = async () => {
-    const res = await fetch(
+     await fetch(
       `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
     )
       .then((response) => response.json())
@@ -52,11 +52,11 @@ const OneMeal = () => {
     <div className="single" ref={componentRef }>
       <div className="single-meal">
         <div className="meal-image">
-          <img src={oneMeal?.strMealThumb} />
+          <img src={oneMeal?.strMealThumb} alt={oneMeal?.strTags} />
         </div>
         <div className="meal-content">
           <h1 className="namePrint">Name: {oneMeal?.strMeal}  <ReactToPrint 
-  trigger={() => <img style={{width: '25px'}} src={print} />}
+  trigger={() => <img style={{width: '25px'}} src={print} alt='Print' />}
   content={() => componentRef.current}
 /></h1>
           <h2>Country: {oneMeal?.strArea}</h2>
@@ -75,13 +75,13 @@ const OneMeal = () => {
           </p>
           <p>
             This is taken from:{" "}
-            <a href={oneMeal?.strSource} target="_blank">
+            <a href={oneMeal?.strSource} target="_blank" rel="noreferrer">
               This site
             </a>
           </p>
           <p>
             If you want to see video click on link{" "}
-            <a href={oneMeal?.strYoutube} target="_blank">
+            <a href={oneMeal?.strYoutube} target="_blank" rel="noreferrer">
               Youtube VIdeo
             </a>
           </p>
