@@ -151,39 +151,17 @@
     font-size: 1.1rem;
   }
 }
-@media (max-width: 550px) {
+
+@media (max-width: 780px) {
   .sidebarSection {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    margin-top: 25px;
+  }
+  .sidebarSectionDark{
+    font-size: 1.4rem;
+    margin-top: 25px;
   }
   .item {
-    font-size: 0.8rem;
-  }
-}
-
-@media (max-width: 470px) {
-  .sidebarSection {
-    font-size: 1rem;
-  }
-  .item {
-    font-size: 0.7rem;
-  }
-  .toggleDivButton{
-    width: 25px;
-    height: 25px;
-  }
-}
-@media (max-width: 420px) {
-  .sectionName{
-    font-size: 0.89rem;
-  }
-}
-
-@media (max-width:360px) {
-  .sectionName{
-    font-size: 0.8rem;
-  }
-  .toggleDivButton{
-    width: 20px;
-    height: 20px;
+    font-size: 0.9rem;
   }
 }

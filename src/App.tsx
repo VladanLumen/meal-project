@@ -6,11 +6,12 @@ import HomePage from "./pages/HomePage/HomePage";
 import Login, { LoginProvider } from "./pages/LoginPage/Login";
 import OneMeal from "./pages/OneMeal/OneMeal";
 import Register, { UsersProvider } from "./pages/Register/Register";
+import { SidebarContextProvider } from "./components/sidebar/SidebarContext";
 
 export const AppContext = createContext({});
 
 function App() {
-  const [isLogged, setIsLogged] = useState(false);
+  const [isLogged, setIsLogged] = useState(true);
   const [favoriteIngredients, setIngredients] = useState<string[]>([]);
   const [favoriteMeals, setMeals] = useState<string[]>([]);
   const [isDark,setIsDark] = useState<boolean>(false);
@@ -54,6 +55,7 @@ function App() {
         }}
       >
         <SearchContextProvider>
+        <SidebarContextProvider>
           <UsersProvider>
             <LoginProvider>
               {isLogged ? (
@@ -73,6 +75,7 @@ function App() {
               )}
             </LoginProvider>
           </UsersProvider>
+      </SidebarContextProvider>
         </SearchContextProvider>
       </AppContext.Provider>
     </div>

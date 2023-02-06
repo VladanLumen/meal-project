@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 import './sidebar.css'
 import { AppContext } from '../../App';
+import { SidebarContext } from './SidebarContext';
 
 type SidebarSection = {
   name:string;
@@ -8,28 +9,21 @@ type SidebarSection = {
   showDelete:boolean;
 }
 
-
 const Sidebar = () => {
 
   const appContext = useContext(AppContext) as {favoriteIngredients:string[],favoriteMeals:string[],addFavoriteMeal:(arg:string)=>{},addFavoriteIngredient:(arg:string)=>{},isDark:boolean};
   const {favoriteIngredients,favoriteMeals,isDark} = appContext;
 
 
-  const [showSidebar, setShowSidebar] = useState(true);
-
-  const toggleSidebar = ()=>{
-    setShowSidebar(showSidebar=>!showSidebar);
-  }
+ const sidebarContext = useContext(SidebarContext) as {showSidebar:boolean,toggleSidebar:()=>{}};
 
   const SidebarSection = ({name,data,showDelete}:SidebarSection) => {
 
-  
-  
     const appContext = useContext(AppContext) as {favoriteIngredients:string[],favoriteMeals:string[],addFavoriteMeal:(arg:string)=>{},addFavoriteIngredient:(arg:string)=>{},deleteMeal:(arg:string)=>{}};
     const {deleteMeal} = appContext;
     
     return (
-      <div className={`sidebarSection${showSidebar?'':'Hidden'}${isDark?'Dark':''}`}>
+      <div className={`sidebarSection${sidebarContext.showSidebar?'':'Hidden'}${isDark?'Dark':''}`}>
         <p className={`sectionName${isDark?'Dark':''}`}>{name}</p>
         <div className="sectionItems">
         {
@@ -47,44 +41,19 @@ const Sidebar = () => {
       </div>
     )
   }
-
-
-
-
   const ingredients:string[] = [];
   return (
-    <div className={`sidebar${showSidebar?'':'Hidden'}${isDark?'Dark':''}`}>
+    <div className={`sidebar${sidebarContext.showSidebar?'':'Hidden'}${isDark?'Dark':''}`}>
       <div className="toggleDiv">
-        <button className='toggleDivButton' onClick={toggleSidebar}>{showSidebar?'<-':'->'}</button>
+        <button className='toggleDivButton' onClick={sidebarContext.toggleSidebar}>{sidebarContext.showSidebar?'<-':'->'}</button>
       </div>
       <SidebarSection name={"Meal"} data={favoriteMeals} showDelete={true}/> 
       <SidebarSection name={"Ingredient"} data={favoriteIngredients} showDelete={false}/>
     </div>
   )
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   
 }
-
-
-
-
-
-
-
 
 
 export default Sidebar
