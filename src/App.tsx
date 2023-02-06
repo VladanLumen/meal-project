@@ -16,6 +16,9 @@ function App() {
   const [favoriteMeals, setMeals] = useState<string[]>([]);
   const [isDark,setIsDark] = useState<boolean>(false);
 
+
+  const [help,setHelp] = useState({});
+
   const addFavoriteMeal = (idMeal: string) => {
     if (!favoriteMeals.includes(idMeal)) {
       setMeals([...favoriteMeals, idMeal]);
@@ -25,7 +28,8 @@ function App() {
     if (!favoriteIngredients.includes(idIngredient))
       setIngredients([...favoriteIngredients, idIngredient]);
   };
-  const addFavoriteIngredientArray = (newFavorites:string[])=>{
+  const addFavoriteIngredientArray = (/*meal:string,*/ newFavorites:string[])=>{
+    // setHelp({"meal":meal,"ingredients":newFavorites})
     setIngredients([...Array.from(new Set([...favoriteIngredients,...newFavorites]))]);
   }
 

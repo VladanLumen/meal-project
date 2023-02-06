@@ -256,6 +256,10 @@
   .meal-card-dark{
     width: 260px;
   }
+  .fav-icon{
+    width: 20px;
+    height: 20px;
+  }
 }
 
 @media (max-width:620px) {

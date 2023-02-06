@@ -42,7 +42,7 @@ const NamePlaceholder = ({users}:any) => {
                 {listUsers.map((user:any, id:number) =>{
                     return (
                         <div key={id}>
-                            <p>{user.email}</p>
+                            <p className='our-user'>{user.email}</p>
                             </div>
                     )
                 })}
