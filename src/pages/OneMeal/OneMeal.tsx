@@ -42,12 +42,10 @@ const OneMeal = () => {
   useEffect(() => {
     fetchOneMeal();
   }, []);
+  console.log(oneMeal);
 
   return (
     <div className="single">
-      <Link to="/">
-        <button className="go-home">Go to Home page</button>
-      </Link>
       <div className="single-meal">
         <div className="meal-image">
           <img src={oneMeal?.strMealThumb} />
@@ -55,7 +53,7 @@ const OneMeal = () => {
         <div className="meal-content">
           <h1>Name: {oneMeal?.strMeal}</h1>
           <h2>Country: {oneMeal?.strArea}</h2>
-          <h3>{oneMeal?.strTags}</h3>
+          <h3>Tag: {oneMeal?.strTags}</h3>
           <p>
             <span style={{ fontWeight: "bold", fontSize: "20px" }}>
               How to prepare:{" "}
@@ -68,8 +66,21 @@ const OneMeal = () => {
             {oneMeal?.strIngredient5},{oneMeal?.strIngredient6},
             {oneMeal?.strIngredient7},{oneMeal?.strIngredient8}{" "}
           </p>
-          <p>This is taken from: <a href={oneMeal?.strSource} target='_blank'>This site</a></p>
-          <p>If you want to see video click on link <a href={oneMeal?.strYoutube} target='_blank'>Youtube VIdeo</a></p>
+          <p>
+            This is taken from:{" "}
+            <a href={oneMeal?.strSource} target="_blank">
+              This site
+            </a>
+          </p>
+          <p>
+            If you want to see video click on link{" "}
+            <a href={oneMeal?.strYoutube} target="_blank">
+              Youtube VIdeo
+            </a>
+          </p>
+          <Link to="/">
+            <button className="go-home">Go to Home page</button>
+          </Link>
         </div>
       </div>
     </div>

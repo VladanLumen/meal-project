@@ -71,3 +71,53 @@
     padding-right: 150px;
 
   }
+  @media only screen and (max-width: 1024px) {
+    .single {
+      height: auto;
+    }
+    
+    .single-meal {
+      flex-direction: column;
+      width: 100%;
+    }
+    
+    .meal-image {
+      width: 100%;
+    }
+    
+    .meal-content {
+      width: 100%;
+      padding: 10px;
+    }
+    
+    .meal-content p {
+      padding-right: 0;
+    }
+  }
+
+
+  @media only screen and (max-width: 767px) {
+    .single {
+      height: auto;
+    }
+  
+    .single-meal {
+      flex-direction: column;
+    }
+  
+    .meal-image {
+      width: 100%;
+    }
+  
+    .meal-content {
+      width: 100%;
+      padding: 20px;
+      border-radius: 0;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+  
+    .meal-content p {
+      padding-right: 0;
+    }
+  }
