@@ -25,7 +25,7 @@ const NamePlaceholder = ({users}:any) => {
     return (
         <div className="namePlaceholder">
             <p className="nameFirstLetter">
-            {users[0].name.slice(0 , 1)}
+            {/* {users[0].name.slice(0 , 1)} */}
             </p>
         </div>
     )

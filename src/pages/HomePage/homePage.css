@@ -139,10 +139,33 @@
 
 
 
-@media (max-width:2560px) {
+  @media (max-width: 768px) {
+    .mainSection {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+    }
+  
+    .msRight {
+      max-height: unset;
+    }
+  
+    .meal-card {
+      width: 90%;
+      height: auto;
+      margin: 30px 5%;
+    }
+  
+    .paging {
+      position: static;
+    }
+  }
+
+  
+
+/* @media (max-width:2560px) {
     .pageNumber {
-        height: 70px;
-        width: 70px;
+        height: 50px;
+        width: 50px;
     }
 
     .pageNumberClicked {
@@ -168,17 +191,7 @@
         grid-template-columns: 25% 1fr;
     }
 }
-@media (max-width:1000px) {
-  .pageNumber {
-    height: 45px;
-    width: 45px;
-}
 
-.pageNumberClicked {
-    height: 45px;
-    width: 45px;
-} 
-}
 @media (max-width:910px) {
     .meal-card {
         margin: 10px;
@@ -215,4 +228,4 @@
   .meal-btn{
     scale: 0.8;
   }
-}
+} */
