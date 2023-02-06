@@ -138,31 +138,9 @@
   }
 
 
-
-  @media (max-width: 768px) {
-    .mainSection {
-      grid-template-columns: 1fr;
-      grid-template-rows: auto 1fr;
-    }
-  
-    .msRight {
-      max-height: unset;
-    }
-  
-    .meal-card {
-      width: 90%;
-      height: auto;
-      margin: 30px 5%;
-    }
-  
-    .paging {
-      position: static;
-    }
-  }
-
   
 
-/* @media (max-width:2560px) {
+@media (max-width:2560px) {
     .pageNumber {
         height: 50px;
         width: 50px;
@@ -228,4 +206,4 @@
   .meal-btn{
     scale: 0.8;
   }
-} */
+}
