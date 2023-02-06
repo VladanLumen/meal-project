@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactToPrint from "react-to-print";
 import "./OneMeal.css";
 import print from '../../images/print.png'
+import { AppContext } from "../../App";
 
 interface oneMealType {
   strArea: string;
@@ -47,14 +48,15 @@ const OneMeal = () => {
     fetchOneMeal();
   }, []);
 
-
+  const appContext = useContext(AppContext) as {favoriteIngredients:string[],favoriteMeals:string[],addFavoriteMeal:(arg:string)=>{},addFavoriteIngredient:(arg:string)=>{},addFavoriteIngredientArray:(arg:string[])=>{},isDark:boolean};
+  const {isDark} = appContext;
   return (
-    <div className="single" ref={componentRef }>
+    <div className={`single${isDark?'Dark':''}`} ref={componentRef }>
       <div className="single-meal">
         <div className="meal-image">
           <img src={oneMeal?.strMealThumb} />
         </div>
-        <div className="meal-content">
+        <div className={`meal-content${isDark?'Dark':''}`}>
           <h1 className="namePrint">Name: {oneMeal?.strMeal}  <ReactToPrint 
   trigger={() => <img style={{width: '25px'}} src={print} />}
   content={() => componentRef.current}

@@ -11,8 +11,8 @@ type SidebarSection = {
 
 const Sidebar = () => {
 
-  const appContext = useContext(AppContext) as {favoriteIngredients:string[],favoriteMeals:string[],addFavoriteMeal:(arg:string)=>{},addFavoriteIngredient:(arg:string)=>{}};
-  const {favoriteIngredients,favoriteMeals,addFavoriteMeal,addFavoriteIngredient} = appContext;
+  const appContext = useContext(AppContext) as {favoriteIngredients:string[],favoriteMeals:string[],addFavoriteMeal:(arg:string)=>{},addFavoriteIngredient:(arg:string)=>{},isDark:boolean};
+  const {favoriteIngredients,favoriteMeals,isDark} = appContext;
 
 
   const [showSidebar, setShowSidebar] = useState(true);
@@ -29,8 +29,8 @@ const Sidebar = () => {
     const {deleteMeal} = appContext;
     
     return (
-      <div className={`sidebarSection${showSidebar?'':'Hidden'}`}>
-        <p className="sectionName">{name}</p>
+      <div className={`sidebarSection${showSidebar?'':'Hidden'}${isDark?'Dark':''}`}>
+        <p className={`sectionName${isDark?'Dark':''}`}>{name}</p>
         <div className="sectionItems">
         {
           data.map((item,id)=>{
@@ -53,9 +53,9 @@ const Sidebar = () => {
 
   const ingredients:string[] = [];
   return (
-    <div className={`sidebar${showSidebar?'':'Hidden'}`}>
+    <div className={`sidebar${showSidebar?'':'Hidden'}${isDark?'Dark':''}`}>
       <div className="toggleDiv">
-        <button className='toggleDivButton' onClick={toggleSidebar}><b>{showSidebar?'<-':'->'}</b></button>
+        <button className='toggleDivButton' onClick={toggleSidebar}>{showSidebar?'<-':'->'}</button>
       </div>
       <SidebarSection name={"Meal"} data={favoriteMeals} showDelete={true}/> 
       <SidebarSection name={"Ingredient"} data={favoriteIngredients} showDelete={false}/>
