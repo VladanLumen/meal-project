@@ -23,6 +23,7 @@ function App() {
     if (!favoriteIngredients.includes(idIngredient))
       setIngredients([...favoriteIngredients, idIngredient]);
   };
+  
 
   const deleteMeal = (meal: string) => {
     setMeals(favoriteMeals.filter((i) => i !== meal));
