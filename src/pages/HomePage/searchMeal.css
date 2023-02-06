@@ -35,7 +35,7 @@
     margin: 20px 0;
   }
   
-  .fav-icon {
+  .fav-icon-searach {
     width: 40px;
     height: 40px;
     position: absolute;
@@ -44,10 +44,10 @@
     cursor: pointer;
   }
   
-  .fav-icon:hover {
+  .fav-icon-search:hover {
     opacity: 0.8;
   }
-  .fav-icon:active {
+  .fav-icon-search:active {
     transform: scale(1.1);
   }
 
