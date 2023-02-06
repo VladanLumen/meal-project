@@ -165,3 +165,36 @@
     font-size: 0.9rem;
   }
 }
+@media (max-width: 425px) {
+  .sidebarHidden{
+    position: absolute;
+    width: 0%;
+    z-index: 1;
+  }
+  .sidebar{
+    position: absolute;
+    width: 80%;
+    z-index: 1;
+  }
+  .msRight{
+    position: absolute;
+  }
+  .toggleDivButton{
+    position: absolute;
+    top: -60px;
+    left: 0;
+  }
+  .sidebarHiddenDark{
+    position: absolute;
+    width: 0%;
+    z-index: 1;
+  }
+  .sidebarDark{
+    position: absolute;
+    width: 80%;
+    z-index: 1;
+  }
+  .msRightDark{
+    position: absolute;
+  }
+}
