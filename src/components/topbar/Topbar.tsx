@@ -11,7 +11,8 @@ const Topbar = () => {
     return (
         <div className='topbar'>
             <div className="tleft">
-            <NamePlaceholder users={users} />
+               <NamePlaceholder />
+               <a className='homeBtn' href='/'>Home</a>
             </div>
             <div className="tright">
                 <Searchbar/>

@@ -14,6 +14,16 @@ export interface MealType {
   strInstructions: string;
   idMeal: number;
   strMeal: string;
+  strIngredient1:string;
+  strIngredient2:string;
+  strIngredient3:string;
+  strIngredient4:string;
+  strIngredient5:string;
+  strIngredient6:string;
+  strIngredient7:string;
+  strIngredient8:string;
+  strIngredient9:string;
+  strIngredient10:string;
 }
 
 interface PageNumber {
@@ -46,8 +56,6 @@ const HomePage: React.FC = () => {
     fetchData();
   }, []);
 
-  // console.info(data);
-
   return (
     <div>
       <Topbar />
@@ -55,7 +63,6 @@ const HomePage: React.FC = () => {
         <div className="msLeft">
           <Sidebar />
         </div>
-        <>{console.info(myMeal)}</>
         {myMeal.length === 0 ? 
         (
           <div className="msRight">
@@ -80,14 +87,12 @@ const HomePage: React.FC = () => {
         :
         (
           <div className="msRight">
-            {/* <>{console.info("MY MEAL: " +myMeal)}</> */}
             {
             myMeal.map((item: any, id) => {
-              console.log("ITEM", item);
               return (
                 <>
                 {item === null ?
-                  <ErrorPage />
+                  <ErrorPage key={id} />
                   :
                 <>
                   {item
@@ -95,10 +100,10 @@ const HomePage: React.FC = () => {
                       (currentPage - 1) * mealsPerPage,
                       currentPage * mealsPerPage
                       )
-                      .map((meal: any) => {
+                      .map((meal: any, id:number) => {
                         return (
                           <>
-                          <SearchedMeals data={meal} />
+                          <SearchedMeals key={id} data={meal} />
                         </>
                       );
                     })}
