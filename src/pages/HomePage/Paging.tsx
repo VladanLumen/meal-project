@@ -19,6 +19,7 @@ const Paging = ({maxPageNumber}:MaxPageNumber) => {
             )
           })
         }
+        
       </div>
     )
   }
