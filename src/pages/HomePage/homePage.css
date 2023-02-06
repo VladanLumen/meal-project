@@ -1,209 +1,268 @@
 .mainSection {
-    display: grid;
-    grid-template-columns: 20% 1fr;
+  display: grid;
+  grid-template-columns: 20% 1fr;
 }
 
 .msRight {
-    display: flex;
-    flex-wrap: wrap;
-    border-radius: 15px;
-    max-height: 95%;
-    align-items: center;
-    justify-content: center;
-    scroll-behavior: smooth;
-    height: 100vh;
-    overflow-y: auto;
-    margin-bottom: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 15px;
+  max-height: 95%;
+  align-items: center;
+  justify-content: center;
+  scroll-behavior: smooth;
+  height: 100vh;
+  overflow-y: auto;
+  margin-bottom: 70px;
 }
+.msRightDark{
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 15px;
+  max-height: 95%;
+  align-items: center;
+  justify-content: center;
+  scroll-behavior: smooth;
+  height: 100vh;
+  overflow-y: auto;
+  margin-bottom: 70px;
+  background-color: grey;
+}
+
 
 
 .meal-card {
-    width: 350px;
-    height: 450px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    position: relative;
-  }
-  
-  .meal-title {
-    font-size: 22px;
-    font-weight: 600;
-    margin: 20px 0;
-  }
-  
-  .fav-icon {
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-  }
-  
-  .fav-icon:hover {
-    opacity: 0.8;
-  }
-  .fav-icon:active {
-    transform: scale(1.1);
-  }
+  width: 350px;
+  height: 450px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
 
-  
-  .meal-img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-  }
-  
-  .meal-desc {
-    font-size: 14px;
-    padding: 0 20px;
-    margin-top: 20px;
-  }
-  
-  .meal-btn {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-    margin-top: 20px;
-  }
-  
-  .meal-btn:hover {
-    background-color: #fff;
-    color: #333;
-  }
-
-  .paging {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #a8a8ad;
-    padding: 10px 0;
-  }
-  
-  .paging > div {
-    padding: 8px 12px;
-    margin: 0 10px;
-    border: 1px solid #333;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .paging > div:hover {
-    background-color: #333;
-    color: #fff;
-  }
-
-  .pageNumber {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 8px 12px;
-    border: 1px solid #333;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .pageNumber:hover {
-    background-color: #333;
-    color: #fff;
-  }
-  
-  .pageNumberClicked {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-color: #333;
-    color: #fff;
-  }
-
-
-  
-
-@media (max-width:2560px) {
-    .pageNumber {
-        height: 50px;
-        width: 50px;
-    }
-
-    .pageNumberClicked {
-        height: 70px;
-        width: 70px;
-    }
+}
+.meal-card-dark{
+  width: 350px;
+  height: 450px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  background-color: rgb(59, 58, 58);
 }
 
-@media (max-width:1440px) {
-    .pageNumber {
-        height: 60px;
-        width: 60px;
-    }
-
-    .pageNumberClicked {
-        height: 60px;
-        width: 60px;
-    }
+.meal-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 20px 0;
 }
 
-@media (max-width:1440px) {
-    .mainSection {
-        grid-template-columns: 25% 1fr;
-    }
+.meal-title-white {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 20px 0;
+  color: white;
 }
 
-@media (max-width:910px) {
-    .meal-card {
-        margin: 10px;
-    }
+.fav-icon {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
 }
-@media (max-width:500px) {
-  .pageNumber {
-    height: 40px;
-    width: 40px;
+
+.fav-icon:hover {
+  opacity: 0.8;
+}
+
+.fav-icon:active {
+  transform: scale(1.1);
+}
+
+
+.meal-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.meal-desc {
+  font-size: 14px;
+  padding: 0 20px;
+  margin-top: 20px;
+}
+
+.meal-desc-white {
+  font-size: 14px;
+  padding: 0 20px;
+  margin-top: 20px;
+  color: white;
+}
+
+.meal-btn {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin-top: 20px;
+}
+
+.meal-btn:hover {
+  background-color: #fff;
+  color: #333;
+}
+
+
+
+.paging {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #a8a8ad;
+  padding: 10px 0;
+}
+
+.paging>div {
+  padding: 8px 12px;
+  margin: 0 10px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.paging>div:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.pageNumber {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 12px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.pageNumber:hover {
+  background-color: #333;
+  color: #fff;
 }
 
 .pageNumberClicked {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #333;
+  color: #fff;
+}
+
+.theme {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  right: 0;
+  margin-right: 20px;
+}
+
+
+
+@media (max-width:2560px) {
+  .pageNumber {
+    height: 50px;
+    width: 50px;
+  }
+
+  .pageNumberClicked {
+    height: 70px;
+    width: 70px;
+  }
+}
+
+@media (max-width:1440px) {
+  .pageNumber {
+    height: 60px;
+    width: 60px;
+  }
+
+  .pageNumberClicked {
+    height: 60px;
+    width: 60px;
+  }
+}
+
+@media (max-width:1440px) {
+  .mainSection {
+    grid-template-columns: 25% 1fr;
+  }
+}
+
+@media (max-width:910px) {
+  .meal-card {
+    margin: 10px;
+  }
+}
+
+@media (max-width:500px) {
+  .pageNumber {
     height: 40px;
     width: 40px;
-} 
+  }
+
+  .pageNumberClicked {
+    height: 40px;
+    width: 40px;
+  }
 }
+
 @media (max-width:500px) {
-  .meal-card{
+  .meal-card {
     width: 250px;
   }
-  .meal-desc{
+
+  .meal-desc {
     font-size: 12.5px;
   }
 }
 
 
 @media (max-width:360px) {
-  .meal-card{
+  .meal-card {
     width: 200px;
   }
-  .meal-desc{
+
+  .meal-desc {
     font-size: 11px;
   }
-  .meal-btn{
+
+  .meal-btn {
     scale: 0.8;
   }
 }

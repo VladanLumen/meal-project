@@ -13,6 +13,7 @@ function App() {
   const [isLogged, setIsLogged] = useState(true);
   const [favoriteIngredients, setIngredients] = useState<string[]>([]);
   const [favoriteMeals, setMeals] = useState<string[]>([]);
+  const [isDark,setIsDark] = useState<boolean>(false);
 
   const addFavoriteMeal = (idMeal: string) => {
     if (!favoriteMeals.includes(idMeal)) {
@@ -31,6 +32,11 @@ function App() {
     setMeals(favoriteMeals.filter((i) => i !== meal));
   };
 
+  const setIsDarkFunc = (isDark:boolean)=>{
+    setIsDark(isDark);
+  }
+
+
   return (
     <div>
       <AppContext.Provider
@@ -43,6 +49,8 @@ function App() {
           deleteMeal,
           isLogged,
           setIsLogged,
+          isDark,
+          setIsDarkFunc
         }}
       >
         <SearchContextProvider>

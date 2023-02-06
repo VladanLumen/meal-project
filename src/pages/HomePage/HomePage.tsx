@@ -7,6 +7,7 @@ import Paging from "./Paging";
 import { SearchContext } from "../../components/topbar/SearchContext";
 import SearchedMeals from "./SearchedMeals";
 import ErrorPage from "../ErrorPage/ErrorPage";
+import { AppContext } from "../../App";
 
 export interface MealType {
   strArea: string;
@@ -56,6 +57,10 @@ const HomePage: React.FC = () => {
     fetchData();
   }, []);
 
+  const appContext = useContext(AppContext) as {favoriteIngredients:string[],favoriteMeals:string[],addFavoriteMeal:(arg:string)=>{},addFavoriteIngredient:(arg:string)=>{},addFavoriteIngredientArray:(arg:string[])=>{},isDark:boolean,setIsDarkFunc:(arg:boolean)=>{}};
+  const {isDark} = appContext;
+
+
   return (
     <div>
       <Topbar />
@@ -65,7 +70,7 @@ const HomePage: React.FC = () => {
         </div>
         {myMeal.length === 0 ? 
         (
-          <div className="msRight">
+          <div className={`msRight${isDark?'Dark':''}`}>
             {
             data
               .slice(
@@ -86,7 +91,7 @@ const HomePage: React.FC = () => {
         )
         :
         (
-          <div className="msRight">
+          <div className={`msRight${isDark?'Dark':''}`}>
             {
             myMeal.map((item: any, id) => {
               return (
