@@ -2,6 +2,7 @@ import './topbar.css'
 import Searchbar from './Search'
 import { useContext, useState } from 'react'
 import { LoginContext } from '../../pages/LoginPage/Login'
+import { Link } from 'react-router-dom'
 
 const Topbar = () => {
     const {users}:any = useContext(LoginContext)
@@ -13,7 +14,7 @@ const Topbar = () => {
         <div className='topbar'>
             <div className="tleft">
                <NamePlaceholder />
-               <a className='homeBtn' href='/'>Home</a>
+               <Link to='/'>Home</Link>
             </div>
             <div className="tright">
                 <Searchbar/>

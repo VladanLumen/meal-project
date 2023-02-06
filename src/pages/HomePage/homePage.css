@@ -85,8 +85,8 @@
   width: 40px;
   height: 40px;
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 0;
+  right: 0px;
   cursor: pointer;
 }
 
@@ -283,9 +283,7 @@
     font-size: 12.5px;
   }
 }
-@media (max-width:450px) {
 
-}
 @media (max-width:420px) {
   .meal-card {
     width: 180px;
@@ -303,5 +301,13 @@
   }
   .theme{
     margin-right: 10px;
+  }
+}
+@media screen and( max-width: 425px) {
+  .fav-icon {
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    cursor: pointer; 
   }
 }

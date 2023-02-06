@@ -12,14 +12,36 @@ const SearchedMeals = ({ data, id }: any) => {
     favoriteMeals: string[];
     addFavoriteMeal: (arg: string) => {};
     addFavoriteIngredient: (arg: string) => {};
+    addFavoriteIngredientArray: (arg: string[]) => {};
+    deleteMeal: (arg: string) => {}
   };
-  const { addFavoriteMeal } = appContext;
+  const { addFavoriteMeal, addFavoriteIngredientArray, deleteMeal } = appContext;
+  
+
+
+  const addFavoriteIngredients =()=>{
+    const ings:string[] = [];
+    ings.push(data.strIngredient1);
+    ings.push(data.strIngredient2);
+    ings.push(data.strIngredient3);
+    ings.push(data.strIngredient4);
+    ings.push(data.strIngredient5);
+    ings.push(data.strIngredient6);
+    ings.push(data.strIngredient7);
+    ings.push(data.strIngredient8);
+    ings.push(data.strIngredient9);
+    ings.push(data.strIngredient10);
+
+    addFavoriteIngredientArray(ings);
+  }
 
   return (
             <div className="search-card" key={id}>
               <h1 className="search-title">{data.strMeal}</h1>
               <img
-                onClick={() => addFavoriteMeal(data.strMeal)}
+                onClick={() => {addFavoriteMeal(data.strMeal)
+                  addFavoriteIngredients()
+                }}
                 src={favIcon}
                 alt="favourite"
                 className="fav-icon"

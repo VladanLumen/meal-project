@@ -39,9 +39,7 @@
     width: 40px;
     height: 40px;
     position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
+    cursor: pointer; 
   }
   
   .fav-icon:hover {
@@ -79,4 +77,12 @@
   
   .search-btn:hover {
     background-color: #0b5fff;
+  }
+  @media screen and (max-width: 425px) {
+    .fav-icon {
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      cursor: pointer; 
+    }
   }
