@@ -1,10 +1,23 @@
 import "./topbar.css";
 import Searchbar from "./Search";
 import { useContext, useEffect, useState } from "react";
+import sun from "../../images/sun.png";
+import moon from "../../images/moon.png";
 import { Link } from "react-router-dom";
 import { User } from "../../pages/LoginPage/Login";
+import { AppContext } from "../../App";
 
 const Topbar = () => {
+  const appContext = useContext(AppContext) as {
+    favoriteIngredients: string[];
+    favoriteMeals: string[];
+    addFavoriteMeal: (arg: string) => {};
+    addFavoriteIngredient: (arg: string) => {};
+    addFavoriteIngredientArray: (arg: string[]) => {};
+    isDark: boolean;
+    setIsDarkFunc: (arg: boolean) => {};
+  };
+  const { isDark, setIsDarkFunc } = appContext;
 
 
   return (
@@ -16,6 +29,14 @@ const Topbar = () => {
       <div className="tright">
         <Searchbar />
       </div>
+      <img
+        onClick={() => {
+          setIsDarkFunc(!isDark);
+        }}
+        src={isDark ? sun : moon}
+        alt=""
+        className="theme"
+      />
     </div>
   );
 };

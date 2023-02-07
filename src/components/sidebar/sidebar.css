@@ -128,6 +128,7 @@
 .ingredient{
   height: 60vh;
   overflow: scroll;
+  overflow-x: hidden;
 }
 
 @media (max-width: 1440px) {

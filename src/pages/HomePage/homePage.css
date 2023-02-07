@@ -184,14 +184,6 @@
   color: #fff;
 }
 
-.theme {
-  width: 70px;
-  height: 70px;
-  position: absolute;
-  right: 0;
-  margin-right: 20px;
-}
-
 @media (max-width: 2560px) {
   .pageNumber {
     height: 50px;
@@ -236,10 +228,6 @@
 }
 
 @media (max-width: 670px) {
-  .theme {
-    height: 60px;
-    width: 60px;
-  }
   .meal-card {
     width: 260px;
   }
@@ -262,10 +250,7 @@
     height: 30px;
     width: 30px;
   }
-  .theme {
-    height: 30px;
-    width: 30px;
-  }
+ 
   .meal-card {
     width: 220px;
   }
@@ -294,9 +279,7 @@
     scale: 0.8;
     /* margin-top: 0; */
   }
-  .theme {
-    margin-right: 10px;
-  }
+ 
 }
 @media screen and( max-width: 425px) {
   .fav-icon {
