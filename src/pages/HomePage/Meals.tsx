@@ -59,7 +59,7 @@ const Meals: React.FC<MealsProps> = ({ data, id }) => {
         />
         <img className="meal-img" src={data.strMealThumb} />
         <p className={`meal-desc${isDark ? "-white" : ""}`}>
-          {data.strInstructions.slice(0, 230)}
+          {data.strInstructions.slice(0, 200)}
         </p>
         <Link to={`/${data.idMeal}`}>
           <button className="meal-btn">Learn More</button>

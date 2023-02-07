@@ -108,10 +108,10 @@
 }
 
 .meal-desc-white {
-  font-size: 14px;
+  font-size: 11px;
   padding: 0 20px;
   margin-top: 20px;
-  color: white;
+    color: white;
 }
 
 .meal-btn {
@@ -292,6 +292,7 @@
 
   .meal-btn {
     scale: 0.8;
+    /* margin-top: 0; */
   }
   .theme {
     margin-right: 10px;

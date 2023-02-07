@@ -23,7 +23,7 @@ const UserRegistration = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [userFavoriteMeals, setUserFavoriteMeals] = useState<string[]>([]);
+  const [userFavoriteMeals] = useState<string[]>([]);
 
   const context = useContext(UsersContext);
   console.log(context);

@@ -81,11 +81,13 @@ const Sidebar = () => {
         </button>
       </div>
       <SidebarSection name={"Meal"} data={favoriteMeals} showDelete={true} />
-      <SidebarSection
-        name={"Ingredient"}
-        data={favoriteIngredients}
-        showDelete={false}
-      />
+      <div className="ingredient">
+        <SidebarSection
+          name={"Ingredient"}
+          data={favoriteIngredients}
+          showDelete={false}
+        />
+      </div>
     </div>
   );
 };

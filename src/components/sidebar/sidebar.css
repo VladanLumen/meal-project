@@ -125,6 +125,10 @@
   height: 30px;
   font-size: 15px;
 }
+.ingredient{
+  height: 60vh;
+  overflow: scroll;
+}
 
 @media (max-width: 1440px) {
   .sidebarSection {

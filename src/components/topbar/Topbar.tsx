@@ -21,7 +21,7 @@ const Topbar = () => {
     <div className="topbar">
       <div className="tleft">
         <NamePlaceholder />
-        <Link to="/">Home</Link>
+        <Link className="homeBtn" to="/">Home</Link>
       </div>
       <div className="tright">
         <Searchbar />
@@ -38,8 +38,6 @@ const NamePlaceholder = ({ users }: any) => {
   const handleUsersList = () => {
     setHover(!hover);
   };
-
-  console.log(hover);
 
   return (
     <div>
