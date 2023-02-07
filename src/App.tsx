@@ -3,18 +3,28 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { SearchContextProvider } from "./components/topbar/SearchContext";
 import HomePage from "./pages/HomePage/HomePage";
-import Login, { LoginProvider } from "./pages/LoginPage/Login";
+import Login, { User }  from "./pages/LoginPage/Login";
 import OneMeal from "./pages/OneMeal/OneMeal";
 import Register, { UsersProvider } from "./pages/Register/Register";
 import { SidebarContextProvider } from "./components/sidebar/SidebarContext";
+import { useEffect } from "react";
+
 
 export const AppContext = createContext({});
 
 function App() {
-  const [isLogged, setIsLogged] = useState(true);
+  const [isLogged, setIsLogged] = useState(false);
   const [favoriteIngredients, setIngredients] = useState<string[]>([]);
   const [favoriteMeals, setMeals] = useState<string[]>([]);
   const [isDark, setIsDark] = useState<boolean>(false);
+
+
+  const [currentUser, setCurrentUser] = useState<User | null>(
+    JSON.parse(localStorage.getItem("currentUser") || "null")
+  );
+
+  console.log(currentUser);
+  
 
   const [help, setHelp] = useState({});
 
@@ -44,6 +54,9 @@ function App() {
     setIsDark(isDark);
   };
 
+  useEffect(() =>{
+  },[])
+
   return (
     <div>
       <AppContext.Provider
@@ -63,8 +76,7 @@ function App() {
         <SearchContextProvider>
           <SidebarContextProvider>
             <UsersProvider>
-              <LoginProvider>
-                {isLogged ? (
+                {currentUser ? (
                   <div>
                     <Routes>
                       <Route path="/" element={<HomePage />} />
@@ -79,7 +91,6 @@ function App() {
                     </Routes>
                   </div>
                 )}
-              </LoginProvider>
             </UsersProvider>
           </SidebarContextProvider>
         </SearchContextProvider>

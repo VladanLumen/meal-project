@@ -1,104 +1,86 @@
-import React, { useContext, useState } from "react";
+import React, { createContext, useState } from "react";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { createContext } from "react";
-import { AppContext } from "../../App";
+import App from "../../App";
+import Topbar from "../../components/topbar/Topbar";
 import "./Login.css";
 
-interface IAccount {
-  password: string;
+export interface User {
   email: string;
-}
-interface User {
-  email: string;
-  name: string;
+  username: string;
   password: string;
 }
 
-const Login = () => {
-  const [input, setInput] = useState<IAccount>({
-    email: "",
-    password: "",
-  });
+export const UserContext = createContext<User | null>(null);
 
-  const { isLogged, setIsLogged }: any = useContext(AppContext);
+const Login: React.FC = () => {
+  const [users, setUsers] = useState<User[]>(
+    JSON.parse(localStorage.getItem("users") || "[]")
+  );
+  const [currentUser, setCurrentUser] = useState<User | null>(
+    JSON.parse(localStorage.getItem("currentUser") || "null")
+  );
+  
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  const logged = JSON.parse(localStorage.getItem("users") || "{}");
-
-  const handleLogin = () => {
-    if (input?.email === logged.email && input?.password === logged.password) {
-      // window.location.assign('/')
-      setIsLogged(true);
-      return alert("SVAKA CAST");
-    } else {
-      window.location.assign("/");
-      return alert("Pogresna");
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const user = users.find(
+      (user) => user.email === email && user.password === password
+    );
+    if (user) {
+      setCurrentUser(user);
+      localStorage.setItem("currentUser", JSON.stringify(user));
     }
   };
 
-  console.log(logged);
+  useEffect(() =>{
+
+  },[currentUser])
+
 
   return (
+    <UserContext.Provider value={currentUser}>
+
     <div className="login-background">
-      <form className="login-form">
-        <h3>Login Here</h3>
+    
+      
+          <form className="login-form" onSubmit={handleLogin}>
+            <input
+              name="email"
+              placeholder="E-mail"
+              type="email"
+              className="login-input"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
 
-        <label htmlFor="username" className="login-label">
-          E-mail
-        </label>
-        <input
-          name="email"
-          value={input?.email}
-          type="email"
-          placeholder="E-mail"
-          onChange={(e) =>
-            setInput({ ...input, [e.target.name]: e.target.value })
-          }
-          className="login-input"
-        />
+            <input
+              name="password"
+              placeholder="Password"
+              type="password"
+              className="login-input"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
 
-        <label htmlFor="password" className="login-label">
-          Password
-        </label>
-        <input
-          name="password"
-          value={input?.password}
-          type="password"
-          placeholder="Password"
-          onChange={(e) =>
-            setInput({ ...input, [e.target.name]: e.target.value })
-          }
-          className="login-input"
-        />
-
-        <button
-          className="login-button"
-          onClick={(e: React.MouseEvent<HTMLButtonElement>) => handleLogin()}
-        >
-          Log In
-        </button>
-        <p className="login-par">
-          Don't have account?
-          <Link className="login" to="/register">
+            <button className="login-button" type="submit" onClick={() => window.location.reload()}>Login</button>
+            <p className="register-par">
+              Don't have account?
+          <Link className="register" to="/register">
             {" "}
             Register here
           </Link>
         </p>
-      </form>
+          </form>
+        
+    
     </div>
+    </UserContext.Provider>
+
   );
 };
 
-export const LoginContext = createContext<{ users: User[] } | undefined>(
-  undefined
-);
-
-export const LoginProvider = ({ children }: any) => {
-  const [users, setUsers] = useState<User[]>(
-    JSON.parse(localStorage.getItem("users") || "[]")
-  );
-
-  return (
-    <LoginContext.Provider value={{ users }}>{children}</LoginContext.Provider>
-  );
-};
 export default Login;

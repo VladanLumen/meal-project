@@ -1,21 +1,11 @@
 import "./topbar.css";
 import Searchbar from "./Search";
 import { useContext, useEffect, useState } from "react";
-import { LoginContext } from "../../pages/LoginPage/Login";
 import { Link } from "react-router-dom";
+import { User } from "../../pages/LoginPage/Login";
 
 const Topbar = () => {
-  const { users }: any = useContext(LoginContext);
 
-  const [data, setData] = useState("");
-
-  const fetchData = async () => {
-    const res = await fetch(
-      "www.themealdb.com/api/json/v1/1/search.php?s=Arrabiata"
-    )
-      .then((response) => response.json())
-      .then((data) => setData(data.meals));
-  };
 
   return (
     <div className="topbar">
@@ -33,17 +23,27 @@ const Topbar = () => {
 const NamePlaceholder = ({ users }: any) => {
   const listUsers = JSON.parse(localStorage.getItem("users") || "{}");
 
+  const [currentUser, setCurrentUser] = useState<User | null>(
+    JSON.parse(localStorage.getItem("currentUser") || "null")
+  );
+  
   const [hover, setHover] = useState(false);
 
   const handleUsersList = () => {
     setHover(!hover);
   };
 
+  const handleLogout = () => {
+    setCurrentUser(null);
+    localStorage.removeItem("currentUser");
+  };
+
   return (
     <div>
       <button className="namePlaceholder" onClick={handleUsersList}>
-        Users
+        {currentUser?.username}
       </button>
+      
       <div className={hover ? "hover-on" : "hover-off"}>
         {listUsers.map((user: any, id: number) => {
           return (
@@ -53,6 +53,12 @@ const NamePlaceholder = ({ users }: any) => {
           );
         })}
       </div>
+      <span onClick={() => window.location.reload()}>
+
+      <button className="loguoutBtn" onClick={handleLogout}>Logout</button>
+      
+      </span>
+
     </div>
   );
 };
@@ -60,3 +66,5 @@ const NamePlaceholder = ({ users }: any) => {
 <Searchbar />;
 
 export default Topbar;
+
+

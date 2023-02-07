@@ -4,7 +4,7 @@ import "./Register.css";
 
 interface User {
   email: string;
-  name: string;
+  username: string;
   password: string;
   userFavoriteMeals: string[];
 }
@@ -20,7 +20,7 @@ const UsersContext = React.createContext<UsersContext | undefined>(undefined);
 
 const UserRegistration = () => {
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [userFavoriteMeals] = useState<string[]>([]);
@@ -39,7 +39,7 @@ const UserRegistration = () => {
       alert("Password does not match");
       return;
     }
-    const newUser: User = { email, name, password, userFavoriteMeals };
+    const newUser: User = { email, username, password, userFavoriteMeals };
     setUsers([...users, newUser]);
     localStorage.setItem("users", JSON.stringify([...users, newUser]));
   };
@@ -67,8 +67,8 @@ const UserRegistration = () => {
           type="text"
           name="username"
           placeholder="Username"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           required
         />
         <label htmlFor="" className="register-label">
