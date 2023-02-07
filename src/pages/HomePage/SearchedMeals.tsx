@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { MealType } from "./HomePage";
-import favIcon from "../../images/favourite.png";
+import favIcon from "../../images/favourites.webp";
 import { AppContext } from "../../App";
 import "./searchMeal.css";
 
