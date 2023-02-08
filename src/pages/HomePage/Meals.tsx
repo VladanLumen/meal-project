@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { MealType } from "./HomePage";
-import favIcon from "../../images/favourites.webp";
+import favIcon from "../../images/favourite.png";
 import { AppContext } from "../../App";
 
 interface MealsProps {
