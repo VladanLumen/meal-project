@@ -23,10 +23,9 @@ const UserRegistration = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [userFavoriteMeals] = useState<string[]>([]);
+  const [userFavoriteMeals, setUserFavoriteMeals] = useState<string[]>([]);
 
   const context = useContext(UsersContext);
-  console.log(context);
 
   if (!context) {
     throw new Error("Context must be used within UsersContextProvider");
@@ -43,6 +42,8 @@ const UserRegistration = () => {
     setUsers([...users, newUser]);
     localStorage.setItem("users", JSON.stringify([...users, newUser]));
   };
+  console.log(userFavoriteMeals);
+  
 
   return (
     <div className="register-background">

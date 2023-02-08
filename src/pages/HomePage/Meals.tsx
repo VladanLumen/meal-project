@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { MealType } from "./HomePage";
 import favIcon from "../../images/favourites.webp";
@@ -20,13 +20,11 @@ const Meals: React.FC<MealsProps> = ({ data, id }) => {
   };
   const {
     addFavoriteMeal,
-    addFavoriteIngredient,
     addFavoriteIngredientArray,
     isDark,
   } = appContext;
 
   const addFavoriteIngredients = () => {
-    console.log(data);
     const ings: string[] = [];
     ings.push(data.strIngredient1);
     ings.push(data.strIngredient2);
@@ -39,6 +37,7 @@ const Meals: React.FC<MealsProps> = ({ data, id }) => {
     ings.push(data.strIngredient9);
     ings.push(data.strIngredient10);
 
+    localStorage.setItem("currentUser", JSON.stringify(ings));    
     addFavoriteIngredientArray(ings);
   };
 

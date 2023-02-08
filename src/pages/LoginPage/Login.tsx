@@ -1,14 +1,13 @@
 import React, { createContext, useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import App from "../../App";
-import Topbar from "../../components/topbar/Topbar";
 import "./Login.css";
 
 export interface User {
   email: string;
   username: string;
   password: string;
+  userFavoriteMeals:string[]
 }
 
 export const UserContext = createContext<User | null>(null);
@@ -21,20 +20,22 @@ const Login: React.FC = () => {
     JSON.parse(localStorage.getItem("currentUser") || "null")
   );
   
+  console.log(users, currentUser);
+  
   const [email, setEmail] = useState("");
-  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const user = users.find(
       (user) => user.email === email && user.password === password
-    );
-    if (user) {
-      setCurrentUser(user);
-      localStorage.setItem("currentUser", JSON.stringify(user));
-    }
-  };
+      
+      );
+      if (user) {
+        setCurrentUser(user);
+        localStorage.setItem("currentUser", JSON.stringify(user));
+      }
+    };
 
   useEffect(() =>{
 

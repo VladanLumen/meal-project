@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import { SearchContextProvider } from "./components/topbar/SearchContext";
@@ -23,11 +23,6 @@ function App() {
     JSON.parse(localStorage.getItem("currentUser") || "null")
   );
 
-  console.log(currentUser);
-  
-
-  const [help, setHelp] = useState({});
-
   const addFavoriteMeal = (idMeal: string) => {
     if (!favoriteMeals.includes(idMeal)) {
       setMeals([...favoriteMeals, idMeal]);
@@ -38,11 +33,11 @@ function App() {
       setIngredients([...favoriteIngredients, idIngredient]);
   };
   const addFavoriteIngredientArray = (
-    /*meal:string,*/ newFavorites: string[]
+      newFavorites: string[]
   ) => {
-    // setHelp({"meal":meal,"ingredients":newFavorites})
     setIngredients([
       ...Array.from(new Set([...favoriteIngredients, ...newFavorites])),
+      
     ]);
   };
 
