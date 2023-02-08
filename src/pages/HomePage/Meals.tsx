@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { MealType } from "./HomePage";
-import favIcon from "../../images/favourite.png";
+import favIcon from "../../images/favourites.webp";
 import { AppContext } from "../../App";
 
 interface MealsProps {
@@ -10,6 +10,8 @@ interface MealsProps {
 }
 
 const Meals: React.FC<MealsProps> = ({ data, id }) => {
+
+
   const appContext = useContext(AppContext) as {
     favoriteIngredients: string[];
     favoriteMeals: string[];
@@ -20,13 +22,11 @@ const Meals: React.FC<MealsProps> = ({ data, id }) => {
   };
   const {
     addFavoriteMeal,
-    addFavoriteIngredient,
     addFavoriteIngredientArray,
     isDark,
   } = appContext;
 
   const addFavoriteIngredients = () => {
-    console.log(data);
     const ings: string[] = [];
     ings.push(data.strIngredient1);
     ings.push(data.strIngredient2);
@@ -40,6 +40,31 @@ const Meals: React.FC<MealsProps> = ({ data, id }) => {
     ings.push(data.strIngredient10);
 
     addFavoriteIngredientArray(ings);
+
+    let usersAll = localStorage.getItem('users')
+    let users = usersAll ? JSON.parse(usersAll) : {};
+
+    let usersString = localStorage.getItem('currentUser');
+    let usersCur = usersString ? JSON.parse(usersString) : {};
+
+    for (let user in users) {
+      if (users[user].email === usersCur.email) {
+        let duplicateFound = false;
+        for (let meal of users[user].userFavoriteMeals) {
+          if (meal.length === ings.length && meal.every((value:any, index:any) => value === ings[index])) {
+            duplicateFound = true;
+            break;
+          }
+        }
+        if (!duplicateFound) {
+          users[user].userFavoriteMeals.push(ings);
+        }
+        break;
+      }
+    }
+    
+    localStorage.setItem('users', JSON.stringify(users));
+    localStorage.setItem('currentUser', JSON.stringify(usersCur));
   };
 
   return (

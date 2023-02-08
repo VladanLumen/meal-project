@@ -85,7 +85,7 @@ const Sidebar = () => {
         <SidebarSection
           name={"Ingredient"}
           data={favoriteIngredients}
-          showDelete={false}
+          showDelete={true}
         />
       </div>
     </div>
