@@ -18,7 +18,6 @@ function App() {
   const [favoriteMeals, setMeals] = useState<string[]>([]);
   const [isDark, setIsDark] = useState<boolean>(false);
 
-
   const [currentUser, setCurrentUser] = useState<User | null>(
     JSON.parse(localStorage.getItem("currentUser") || "null")
   );
@@ -29,6 +28,8 @@ function App() {
     }
   };
   const addFavoriteIngredient = (idIngredient: string) => {
+    
+
     if (!favoriteIngredients.includes(idIngredient))
       setIngredients([...favoriteIngredients, idIngredient]);
   };

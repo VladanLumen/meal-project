@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { MealType } from "./HomePage";
 import favIcon from "../../images/favourites.webp";
@@ -10,6 +10,8 @@ interface MealsProps {
 }
 
 const Meals: React.FC<MealsProps> = ({ data, id }) => {
+
+
   const appContext = useContext(AppContext) as {
     favoriteIngredients: string[];
     favoriteMeals: string[];
@@ -37,8 +39,32 @@ const Meals: React.FC<MealsProps> = ({ data, id }) => {
     ings.push(data.strIngredient9);
     ings.push(data.strIngredient10);
 
-    localStorage.setItem("currentUser", JSON.stringify(ings));    
     addFavoriteIngredientArray(ings);
+
+    let usersAll = localStorage.getItem('users')
+    let users = usersAll ? JSON.parse(usersAll) : {};
+
+    let usersString = localStorage.getItem('currentUser');
+    let usersCur = usersString ? JSON.parse(usersString) : {};
+
+    for (let user in users) {
+      if (users[user].email === usersCur.email) {
+        let duplicateFound = false;
+        for (let meal of users[user].userFavoriteMeals) {
+          if (meal.length === ings.length && meal.every((value:any, index:any) => value === ings[index])) {
+            duplicateFound = true;
+            break;
+          }
+        }
+        if (!duplicateFound) {
+          users[user].userFavoriteMeals.push(ings);
+        }
+        break;
+      }
+    }
+    
+    localStorage.setItem('users', JSON.stringify(users));
+    localStorage.setItem('currentUser', JSON.stringify(usersCur));
   };
 
   return (

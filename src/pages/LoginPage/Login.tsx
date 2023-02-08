@@ -76,8 +76,6 @@ const Login: React.FC = () => {
           </Link>
         </p>
           </form>
-        
-    
     </div>
     </UserContext.Provider>
 

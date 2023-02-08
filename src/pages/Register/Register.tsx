@@ -2,21 +2,21 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Register.css";
 
-interface User {
+export interface User {
   email: string;
   username: string;
   password: string;
   userFavoriteMeals: string[];
 }
 
-interface UsersContext {
+export interface UsersContext {
   users: User[];
   setUsers: React.Dispatch<React.SetStateAction<User[]>>;
   userFavoriteMeals: string[];
   setUserFavoriteMealsFunc: (newMeal: string) => void;
 }
 
-const UsersContext = React.createContext<UsersContext | undefined>(undefined);
+export const UsersContext = React.createContext<UsersContext | undefined>(undefined);
 
 const UserRegistration = () => {
   const [email, setEmail] = useState("");
